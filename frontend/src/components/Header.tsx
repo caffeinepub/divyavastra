@@ -6,14 +6,15 @@ const Header: React.FC = () => {
 
   const navLinks = [
     { label: 'Home', href: '#home' },
-    { label: 'Collection', href: '#collection' },
+    { label: 'Gopi Skirts', href: '#gopi-skirts' },
+    { label: 'Short Kurtis', href: '#short-kurtis' },
     { label: 'About', href: '#about' },
     { label: 'Contact', href: '#contact' },
   ];
 
   return (
-    <header className="sticky top-0 z-50 w-full shadow-warm" style={{ background: 'oklch(0.38 0.16 18)' }}>
-      {/* Top decorative strip */}
+    <header className="sticky top-0 z-50 w-full" style={{ background: 'oklch(0.18 0.06 240)', boxShadow: '0 4px 24px oklch(0.12 0.05 240 / 0.5)' }}>
+      {/* Top decorative strip - gold & saffron */}
       <div className="h-1 w-full" style={{
         background: 'linear-gradient(90deg, oklch(0.78 0.16 80), oklch(0.72 0.18 55), oklch(0.78 0.16 80), oklch(0.72 0.18 55), oklch(0.78 0.16 80))'
       }} />
@@ -21,34 +22,42 @@ const Header: React.FC = () => {
       <div className="container mx-auto px-4 py-3 flex items-center justify-between">
         {/* Logo & Brand */}
         <a href="#home" className="flex items-center gap-3 group">
-          <div className="relative">
+          <div className="relative flex items-center gap-2">
             <img
-              src="/assets/generated/logo.dim_400x150.png"
-              alt="DivyaVastra"
-              className="h-12 w-auto object-contain"
+              src="/assets/generated/divyavastra-logo-emblem.dim_200x200.png"
+              alt="DivyaVastra Emblem"
+              className="h-10 w-10 object-contain rounded-full animate-float"
               onError={(e) => {
                 (e.target as HTMLImageElement).style.display = 'none';
               }}
             />
-            <span
-              className="font-display text-2xl font-bold tracking-wider"
-              style={{ color: 'oklch(0.78 0.16 80)' }}
-            >
-              DivyaVastra
-            </span>
+            <div>
+              <span
+                className="font-display text-2xl font-bold tracking-wider block leading-none"
+                style={{ color: 'oklch(0.78 0.16 80)' }}
+              >
+                DivyaVastra
+              </span>
+              <span
+                className="font-body text-xs tracking-widest uppercase"
+                style={{ color: 'oklch(0.72 0.18 55)' }}
+              >
+                ✦ Divine Fashion ✦
+              </span>
+            </div>
           </div>
         </a>
 
         {/* Desktop Nav */}
-        <nav className="hidden md:flex items-center gap-8">
+        <nav className="hidden md:flex items-center gap-7">
           {navLinks.map((link) => (
             <a
               key={link.label}
               href={link.href}
-              className="font-body text-sm font-semibold tracking-widest uppercase transition-colors duration-200"
-              style={{ color: 'oklch(0.88 0.03 55)' }}
+              className="font-body text-xs font-semibold tracking-widest uppercase transition-colors duration-200"
+              style={{ color: 'oklch(0.82 0.04 80)' }}
               onMouseEnter={(e) => (e.currentTarget.style.color = 'oklch(0.78 0.16 80)')}
-              onMouseLeave={(e) => (e.currentTarget.style.color = 'oklch(0.88 0.03 55)')}
+              onMouseLeave={(e) => (e.currentTarget.style.color = 'oklch(0.82 0.04 80)')}
             >
               {link.label}
             </a>
@@ -58,14 +67,14 @@ const Header: React.FC = () => {
         {/* CTA */}
         <div className="hidden md:flex items-center gap-2">
           <a
-            href="#collection"
-            className="flex items-center gap-2 px-5 py-2 rounded-sm font-body text-sm font-bold tracking-wider uppercase transition-all duration-200 hover:shadow-gold"
+            href="#gopi-skirts"
+            className="flex items-center gap-2 px-5 py-2 rounded-sm font-body text-xs font-bold tracking-wider uppercase transition-all duration-200 hover:shadow-gold hover:-translate-y-0.5"
             style={{
               background: 'linear-gradient(135deg, oklch(0.78 0.16 80), oklch(0.72 0.18 55))',
-              color: 'oklch(0.18 0.04 30)',
+              color: 'oklch(0.18 0.06 240)',
             }}
           >
-            <Sparkles size={14} />
+            <Sparkles size={13} />
             Shop Now
           </a>
         </div>
@@ -83,25 +92,25 @@ const Header: React.FC = () => {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="md:hidden border-t" style={{ borderColor: 'oklch(0.78 0.16 80 / 0.3)', background: 'oklch(0.32 0.12 18)' }}>
+        <div className="md:hidden border-t" style={{ borderColor: 'oklch(0.78 0.16 80 / 0.25)', background: 'oklch(0.14 0.05 240)' }}>
           <nav className="container mx-auto px-4 py-4 flex flex-col gap-4">
             {navLinks.map((link) => (
               <a
                 key={link.label}
                 href={link.href}
                 className="font-body text-sm font-semibold tracking-widest uppercase py-2 border-b"
-                style={{ color: 'oklch(0.88 0.03 55)', borderColor: 'oklch(0.78 0.16 80 / 0.2)' }}
+                style={{ color: 'oklch(0.82 0.04 80)', borderColor: 'oklch(0.78 0.16 80 / 0.15)' }}
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
               </a>
             ))}
             <a
-              href="#collection"
+              href="#gopi-skirts"
               className="flex items-center justify-center gap-2 px-5 py-3 rounded-sm font-body text-sm font-bold tracking-wider uppercase mt-2"
               style={{
                 background: 'linear-gradient(135deg, oklch(0.78 0.16 80), oklch(0.72 0.18 55))',
-                color: 'oklch(0.18 0.04 30)',
+                color: 'oklch(0.18 0.06 240)',
               }}
               onClick={() => setMenuOpen(false)}
             >
@@ -114,7 +123,7 @@ const Header: React.FC = () => {
 
       {/* Bottom decorative strip */}
       <div className="h-px w-full" style={{
-        background: 'linear-gradient(90deg, transparent, oklch(0.78 0.16 80 / 0.5), transparent)'
+        background: 'linear-gradient(90deg, transparent, oklch(0.78 0.16 80 / 0.4), transparent)'
       }} />
     </header>
   );

@@ -1,11 +1,11 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 3,
-  "summary": "DivyaVastra is a ladies clothing business specializing in Gopi skirts. The project will be a web/app presence for this clothing brand.",
+  "projectStateVersion": 5,
+  "summary": "DivyaVastra is a ladies clothing business specializing in Gopi skirts and short kurtis. The project is a web presence for this clothing brand with a Radha Krishna themed interface, featuring the business name 'divyavastra', Instagram contact link, and a cute/pretty UI for both Gopi skirts and short kurtis.",
   "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Hero banner with colorful flowing Gopi skirts fabric pattern in saffron, magenta, and gold tones with floral and paisley motifs (hero-banner.dim_1200x500.png)\n- DivyaVastra brand logo with decorative Indian-style lettering in gold on a deep red background (logo.dim_400x150.png)\n- Product placeholder image showing a vibrant Gopi skirt in rich colors (product-placeholder.dim_600x700.png)",
+  "imageRequirements": "## Required Images\n- Wide decorative hero banner with Radha Krishna devotional illustration — peacock blue sky, golden temple pillars, lotus flowers, peacock feathers, flute motifs, and warm glowing diyas, rich saffron and gold color palette (radha-krishna-hero-banner.dim_1440x700.png)\n- Decorative horizontal divider strip with peacock feather and lotus mandala pattern in gold and teal on a deep navy background (section-divider-motif.dim_1440x80.png)\n- Circular brand logo emblem with flute and lotus motif in gold on deep blue background with ornate border (divyavastra-logo-emblem.dim_200x200.png)",
   "existing_features": [
     {
       "id": "feature-create-a-homepage-for-divyavastra-that-displays-the-brand-name-prominently-a-tagline-about-gopi-skirts-and-ladies-clothing-a-featured-products-collection-section-and-a-footer-with-business-name-and-contact-placeholder",
@@ -30,6 +30,38 @@
         "REQ-4"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-redesign-the-entire-website-with-a-radha-krishna-devotional-theme-use-a-divine-color-palette-of-deep-peacock-blue-gold-saffron-and-lotus-pink-incorporate-decorative-motifs-such-as-peacock-feathers-flute-silhouettes-lotus-flowers-and-mandala-borders-throughout-the-ui-header-section-dividers-hero-background-cards-apply-this-theme-consistently-across-all-components-including-header-herosection-featuredproducts-aboutsection-and-footer",
+      "title": "Redesign the entire website with a Radha Krishna devotional theme — use a divine color palette of deep peacock blue, gold, saffron, and lotus pink; incorporate decorative motifs such as peacock feathers, flute silhouettes, lotus flowers, and mandala borders throughout the UI (header, section dividers, hero background, cards). Apply this theme consistently across all components including Header, HeroSection, FeaturedProducts, AboutSection, and Footer.",
+      "reqIds": [
+        "REQ-5"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-footer-component-to-replace-any-existing-whatsapp-or-placeholder-contact-link-with-the-instagram-link-https-www-instagram-com-divyavastra-igsh-egd4etc2bgl4mzn1-displaying-it-prominently-as-the-primary-contact-social-channel-with-the-instagram-icon-and-the-handle-divyavastra",
+      "title": "Update the Footer component to replace any existing WhatsApp or placeholder contact link with the Instagram link https://www.instagram.com/divyavastra_?igsh=eGd4eTc2bGl4MzN1, displaying it prominently as the primary contact/social channel with the Instagram icon and the handle @divyavastra_.",
+      "reqIds": [
+        "REQ-6"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-dedicated-short-kurtis-section-on-the-homepage-alongside-the-existing-gopi-skirts-collection-display-short-kurti-products-in-a-cute-pretty-layout-with-pastel-floral-accents-distinct-from-the-gopi-skirts-grid-use-category-filtering-to-separate-and-display-the-two-product-categories-in-their-own-labeled-sections",
+      "title": "Add a dedicated 'Short Kurtis' section on the homepage alongside the existing Gopi Skirts collection. Display Short Kurti products in a cute, pretty layout with pastel floral accents distinct from the Gopi Skirts grid. Use category filtering to separate and display the two product categories in their own labeled sections.",
+      "reqIds": [
+        "REQ-8"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-use-the-uploaded-product-photos-as-product-images-in-the-catalog-map-the-uploaded-images-to-backend-product-records-use-img-4047-1-jpeg-and-img-4047-2-jpeg-for-a-gopi-skirt-product-red-gold-floral-lehenga-img-4044-1-jpeg-and-img-4044-2-jpeg-for-a-gopi-skirt-product-navy-gold-lehenga-img-4045-1-jpeg-and-img-4045-2-jpeg-for-a-gopi-skirt-product-pink-floral-lehenga-and-img-4048-1-jpeg-and-img-4048-2-jpeg-for-a-short-kurti-product-white-purple-block-print-kurti-serve-these-as-static-assets-from-frontend-public-assets-generated-and-update-the-backend-seed-imageurl-values-accordingly",
+      "title": "Use the uploaded product photos as product images in the catalog. Map the uploaded images to backend product records: use IMG_4047-1.jpeg and IMG_4047-2.jpeg for a Gopi Skirt product (red/gold floral lehenga), IMG_4044-1.jpeg and IMG_4044-2.jpeg for a Gopi Skirt product (navy/gold lehenga), IMG_4045-1.jpeg and IMG_4045-2.jpeg for a Gopi Skirt product (pink floral lehenga), and IMG_4048-1.jpeg and IMG_4048-2.jpeg for a Short Kurti product (white/purple block-print kurti). Serve these as static assets from frontend/public/assets/generated and update the backend seed imageUrl values accordingly.",
+      "reqIds": [
+        "REQ-9"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
@@ -38,6 +70,32 @@
       "summary": "Create a backend data model for clothing products with fields: id, name, description, price, category (defaulting to 'Gopi Skirt'), imageUrl, and availability. Seed the backend with at least 4 sample Gopi skirt products.",
       "reqIds": [
         "REQ-3"
+      ],
+      "status": "pending"
+    },
+    {
+      "id": "AR-4",
+      "summary": "Redesign the website with a Radha Krishna themed interface — use divine, devotional aesthetics with peacock feathers, lotus motifs, flute imagery, blue/golden color palette inspired by Radha Krishna.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-5",
+      "summary": "Add Instagram contact link (https://www.instagram.com/divyavastra_?igsh=eGd4eTc2bGl4MzN1) to the website footer/contact section.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-6",
+      "summary": "Add a dedicated section/category for Short Kurtis alongside Gopi Skirts with a cute and pretty interface for both product categories.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-9",
+      "summary": "Add a 'Short Kurtis' product category to the backend data model and seed at least 3 sample Short Kurti products alongside the existing Gopi Skirt products. Each product must include id, name, description, price, category ('Short Kurti'), imageUrl, and availability fields.",
+      "reqIds": [
+        "REQ-7"
       ],
       "status": "pending"
     }

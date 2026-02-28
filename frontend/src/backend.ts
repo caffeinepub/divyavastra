@@ -120,7 +120,9 @@ export interface backendInterface {
     deleteProduct(id: string): Promise<void>;
     getProductById(id: string): Promise<Product>;
     getProducts(): Promise<Array<Product>>;
-    initialize(): Promise<void>;
+    getProductsByCategory(category: string): Promise<Array<Product>>;
+    initializeGopiProducts(): Promise<void>;
+    initializeKurtiProducts(): Promise<void>;
     updateProduct(product: Product): Promise<void>;
 }
 import type { _CaffeineStorageRefillInformation as __CaffeineStorageRefillInformation, _CaffeineStorageRefillResult as __CaffeineStorageRefillResult } from "./declarations/backend.did.d.ts";
@@ -266,17 +268,45 @@ export class Backend implements backendInterface {
             return result;
         }
     }
-    async initialize(): Promise<void> {
+    async getProductsByCategory(arg0: string): Promise<Array<Product>> {
         if (this.processError) {
             try {
-                const result = await this.actor.initialize();
+                const result = await this.actor.getProductsByCategory(arg0);
                 return result;
             } catch (e) {
                 this.processError(e);
                 throw new Error("unreachable");
             }
         } else {
-            const result = await this.actor.initialize();
+            const result = await this.actor.getProductsByCategory(arg0);
+            return result;
+        }
+    }
+    async initializeGopiProducts(): Promise<void> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.initializeGopiProducts();
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.initializeGopiProducts();
+            return result;
+        }
+    }
+    async initializeKurtiProducts(): Promise<void> {
+        if (this.processError) {
+            try {
+                const result = await this.actor.initializeKurtiProducts();
+                return result;
+            } catch (e) {
+                this.processError(e);
+                throw new Error("unreachable");
+            }
+        } else {
+            const result = await this.actor.initializeKurtiProducts();
             return result;
         }
     }

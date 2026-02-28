@@ -15,17 +15,50 @@ export function useProducts() {
   });
 }
 
-export function useInitialize() {
+export function useProductsByCategory(category: string) {
+  const { actor, isFetching } = useActor();
+
+  return useQuery<Product[]>({
+    queryKey: ['products', 'category', category],
+    queryFn: async () => {
+      if (!actor) return [];
+      return actor.getProductsByCategory(category);
+    },
+    enabled: !!actor && !isFetching,
+  });
+}
+
+export function useInitializeGopi() {
   const { actor } = useActor();
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: async () => {
       if (!actor) throw new Error('Actor not available');
-      return actor.initialize();
+      return actor.initializeGopiProducts();
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['products'] });
     },
   });
+}
+
+export function useInitializeKurti() {
+  const { actor } = useActor();
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async () => {
+      if (!actor) throw new Error('Actor not available');
+      return actor.initializeKurtiProducts();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['products'] });
+    },
+  });
+}
+
+// Keep backward compat alias
+export function useInitialize() {
+  return useInitializeGopi();
 }

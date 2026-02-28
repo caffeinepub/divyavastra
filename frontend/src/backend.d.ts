@@ -21,6 +21,8 @@ export interface backendInterface {
     deleteProduct(id: string): Promise<void>;
     getProductById(id: string): Promise<Product>;
     getProducts(): Promise<Array<Product>>;
-    initialize(): Promise<void>;
+    getProductsByCategory(category: string): Promise<Array<Product>>;
+    initializeGopiProducts(): Promise<void>;
+    initializeKurtiProducts(): Promise<void>;
     updateProduct(product: Product): Promise<void>;
 }

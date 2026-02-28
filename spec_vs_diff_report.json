@@ -1,78 +1,65 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-28T18:56:33.857Z",
-  "summary": "The diff implements the vast majority of requirements. REQ-1, REQ-2, REQ-4 are well-covered. REQ-3 is mostly implemented but has a minor field naming deviation (available vs availability) and the seeding requires a manual initialize() call rather than being pre-seeded at actor startup. There are also some hallucinated features (extra CRUD endpoints, social media links, About section) not requested.",
+  "generatedAt": "2026-02-28T19:10:58.493Z",
+  "summary": "The diff implements the majority of the build requirements. REQ-5 (Radha Krishna theme), REQ-6 (Instagram footer), REQ-7 (Short Kurti backend), REQ-8 (Short Kurtis section), and REQ-9 (product image mapping) are all substantially addressed. However, the hooks directory was modified (useQueries.ts was changed to add useProductsByCategory and useInitializeKurti), which violates the explicit constraint 'Do not edit files under frontend/src/hooks/'. Additionally, REQ-9 requires actual image files placed in frontend/public/assets/generated but no image files appear in the added files list.",
   "missing_requirements": [
     {
-      "id": "REQ-3",
-      "requirement": "Seed the backend with at least 4 sample Gopi skirt products pre-seeded at actor initialization without requiring an explicit call.",
-      "reason": "The backend defines an initialize() function that must be explicitly called to seed products; they are not pre-seeded at actor startup. The auto-initialize logic is delegated to the frontend (HomePage.tsx), meaning the backend itself does not guarantee pre-seeded data as specified.",
+      "requirement": "Do not edit files under frontend/src/hooks/ — this is an explicit constraint in the build request",
+      "reason": "frontend/src/hooks/useQueries.ts was modified to add useProductsByCategory, useInitializeKurti, and useInitialize functions. The constraint explicitly forbids editing files under frontend/src/hooks/.",
+      "evidence": [
+        "frontend/src/hooks/useQueries.ts"
+      ]
+    },
+    {
+      "id": "REQ-9",
+      "requirement": "Product images from the uploaded photos are placed in frontend/public/assets/generated",
+      "reason": "The diff shows backend seed data referencing paths like /assets/generated/IMG_4047-1.jpeg and ProductCard rendering those paths, but there is no evidence in the diff that the actual image files were added to frontend/public/assets/generated. No new image files appear in the Added files list.",
+      "evidence": [
+        "backend/main.mo",
+        "frontend/src/components/ProductCard.tsx"
+      ]
+    }
+  ],
+  "hallucinated_features": [
+    {
+      "description": "Migration module added for stable memory migration",
+      "reason": "The build request did not request any backend migration infrastructure. A migration.mo file was added and integrated into main.mo with 'with migration = Migration.run', which was not part of any requirement.",
+      "evidence": [
+        "backend/migration.mo",
+        "backend/main.mo"
+      ]
+    },
+    {
+      "description": "Separate initializeGopiProducts and initializeKurtiProducts public backend functions",
+      "reason": "The build request specified seeding products but did not specify splitting initialization into two separate public endpoints with sequential calling logic from the frontend.",
       "evidence": [
         "backend/main.mo",
         "frontend/src/pages/HomePage.tsx"
       ]
     },
     {
-      "id": "REQ-3",
-      "requirement": "Product type field named 'availability' as specified in the requirements.",
-      "reason": "The Product type uses the field name 'available' (Bool) instead of 'availability' as specified in the build request.",
+      "description": "ProductCard accentColor prop with dual-mode peacock and lotus styling",
+      "reason": "The build request asked for visually distinct sections but did not specify a dual-mode ProductCard component with an accentColor prop as a specific implementation detail.",
       "evidence": [
-        "backend/main.mo"
-      ]
-    }
-  ],
-  "hallucinated_features": [
-    {
-      "description": "Additional backend CRUD operations: updateProduct, addProduct, deleteProduct, and getProductById endpoints.",
-      "reason": "The build request only requested a query function to list all products and seeded data. No admin dashboard or product management was requested and it is explicitly listed as a non-goal.",
-      "evidence": [
-        "backend/main.mo"
-      ]
-    },
-    {
-      "description": "About/Our Story section with brand narrative and feature cards.",
-      "reason": "The build request only specifies a homepage with brand name, tagline, featured products section, and footer. An About section was not requested.",
-      "evidence": [
-        "frontend/src/components/AboutSection.tsx",
-        "frontend/src/pages/HomePage.tsx"
-      ]
-    },
-    {
-      "description": "Social media links (Instagram, Facebook, WhatsApp) in the footer.",
-      "reason": "The build request only asked for a footer with business name and contact placeholder. Social media integration was not requested.",
-      "evidence": [
-        "frontend/src/components/Footer.tsx"
-      ]
-    },
-    {
-      "description": "useInitialize mutation hook that auto-triggers product seeding from the frontend when the product list is empty.",
-      "reason": "Seeding was specified as a backend concern. Delegating seed initialization to the frontend via a mutation was not requested.",
-      "evidence": [
-        "frontend/src/hooks/useQueries.ts",
-        "frontend/src/pages/HomePage.tsx"
+        "frontend/src/components/ProductCard.tsx"
       ]
     }
   ],
   "confidence": 0.78,
   "changed_files": [
-    "all_files_summary.json",
     "backend/main.mo",
+    "backend/migration.mo",
     "frontend-file-summaries.txt",
-    "frontend/index.css",
-    "frontend/index.html",
-    "frontend/src/App.tsx",
     "frontend/src/components/AboutSection.tsx",
-    "frontend/src/components/FeaturedProducts.tsx",
     "frontend/src/components/Footer.tsx",
+    "frontend/src/components/GopiSkirtsSection.tsx",
     "frontend/src/components/Header.tsx",
     "frontend/src/components/HeroSection.tsx",
     "frontend/src/components/ProductCard.tsx",
-    "frontend/src/hooks/useActor.ts",
-    "frontend/src/hooks/useInternetIdentity.ts",
+    "frontend/src/components/ShortKurtisSection.tsx",
     "frontend/src/hooks/useQueries.ts",
     "frontend/src/index.css",
-    "frontend/src/main.tsx",
     "frontend/src/pages/HomePage.tsx",
     "frontend/tailwind.config.js",
     "project_state.json"

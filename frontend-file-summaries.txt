@@ -1,13 +1,15 @@
 {
-  "frontend/src/index.css": "Global styles defining the DivyaVastra warm Indian color palette using OKLCH tokens (deep crimson, saffron, gold, cream), custom Google Fonts imports (Playfair Display, Cinzel, Lato), and utility classes for gold dividers and ornate decorative elements.",
-  "frontend/tailwind.config.js": "Extended Tailwind config with DivyaVastra brand fonts (Playfair Display, Cinzel, Lato), warm shadow utilities (warm, warm-lg, gold), and custom keyframe animations (shimmer, float) for the festive Indian aesthetic.",
-  "frontend/src/hooks/useQueries.ts": "React Query hooks for fetching the product catalog (useProducts) and initializing seed data (useInitialize) from the backend canister.",
-  "frontend/src/components/Header.tsx": "Sticky header with DivyaVastra brand logo/name in gold on deep crimson background, desktop navigation links, a gold CTA button, and a responsive mobile hamburger menu.",
-  "frontend/src/components/HeroSection.tsx": "Full-width hero section with the hero banner image, dark overlay gradient, brand name display, tagline about Gopi skirts, and two CTA buttons (Explore Collection, Our Story).",
-  "frontend/src/components/ProductCard.tsx": "Individual product card displaying image (with placeholder fallback), name, description, category badge, availability badge, formatted INR price, and a View Details button.",
+  "frontend/src/index.css": "Global styles with Radha Krishna devotional theme using OKLCH tokens — peacock blue as primary, gold/saffron as accents, lotus pink for kurti section, with custom utility classes for gold dividers, lotus dividers, and peacock card styles.",
+  "frontend/tailwind.config.js": "Extended Tailwind config with Radha Krishna theme tokens (peacock, divine-gold, saffron, lotus colors), Poppins font added, divine/peacock shadow utilities, and glow-pulse animation for the devotional aesthetic.",
+  "frontend/src/hooks/useQueries.ts": "React Query hooks for fetching all products, products by category (useProductsByCategory), and separate initialization mutations for Gopi products and Kurti products.",
+  "frontend/src/components/Header.tsx": "Sticky header with deep peacock blue background, DivyaVastra logo emblem, gold brand name, updated nav links including Gopi Skirts and Short Kurtis sections, and gold CTA button.",
+  "frontend/src/components/HeroSection.tsx": "Full-width hero using the Radha Krishna banner image with peacock blue overlay, divine gold/lotus pink text, updated tagline mentioning both Gopi Skirts and Short Kurtis, and section divider motif image.",
+  "frontend/src/components/ProductCard.tsx": "Product card with dual accent modes (peacock for Gopi Skirts, lotus pink for Short Kurtis), renders actual product images from static asset paths, and \"Order Now\" button linking to Instagram.",
   "frontend/src/components/FeaturedProducts.tsx": "Responsive 4-column product grid section with skeleton loading cards, error state, empty state, and maps backend Product data to ProductCard components.",
-  "frontend/src/components/AboutSection.tsx": "Dark crimson about section with brand story text and three feature cards (Crafted with Love, Premium Quality, Festive Elegance) with gold-accented icons.",
-  "frontend/src/components/Footer.tsx": "Multi-column footer with brand info, social links (Instagram, Facebook, WhatsApp), quick navigation links, contact details, copyright, and caffeine.ai attribution with UTM tracking.",
-  "frontend/src/pages/HomePage.tsx": "Main homepage composing all sections (Header, Hero, FeaturedProducts, About, Footer), uses useProducts hook and auto-initializes seed data when the product list is empty.",
-  "frontend/src/App.tsx": "Root application component that renders the HomePage directly as the single-page storefront."
+  "frontend/src/components/AboutSection.tsx": "Redesigned about section with deep peacock blue gradient background, emoji-based feature icons, brand story quote, and section divider motif image.",
+  "frontend/src/components/Footer.tsx": "Redesigned footer with peacock blue background, Instagram as the primary contact channel (@divyavastra_ with exact link), updated quick links including both product sections, and Radha Krishna blessing card.",
+  "frontend/src/pages/HomePage.tsx": "Updated homepage composing Header, Hero, GopiSkirtsSection, ShortKurtisSection, About, and Footer with sequential auto-initialization of both Gopi and Kurti products when catalog is empty.",
+  "frontend/src/App.tsx": "Root application component that renders the HomePage directly as the single-page storefront.",
+  "frontend/src/components/GopiSkirtsSection.tsx": "New section component fetching Gopi Skirt products via useProductsByCategory, with peacock blue accents, peacock feather decorative elements, and responsive 4-column product grid.",
+  "frontend/src/components/ShortKurtisSection.tsx": "New section component fetching Short Kurti products via useProductsByCategory, with soft lotus pink/floral aesthetic, cute styling distinct from Gopi Skirts section, and responsive product grid."
 }

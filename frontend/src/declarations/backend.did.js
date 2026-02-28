@@ -60,7 +60,9 @@ export const idlService = IDL.Service({
   'deleteProduct' : IDL.Func([IDL.Text], [], []),
   'getProductById' : IDL.Func([IDL.Text], [Product], ['query']),
   'getProducts' : IDL.Func([], [IDL.Vec(Product)], ['query']),
-  'initialize' : IDL.Func([], [], []),
+  'getProductsByCategory' : IDL.Func([IDL.Text], [IDL.Vec(Product)], ['query']),
+  'initializeGopiProducts' : IDL.Func([], [], []),
+  'initializeKurtiProducts' : IDL.Func([], [], []),
   'updateProduct' : IDL.Func([Product], [], []),
 });
 
@@ -119,7 +121,13 @@ export const idlFactory = ({ IDL }) => {
     'deleteProduct' : IDL.Func([IDL.Text], [], []),
     'getProductById' : IDL.Func([IDL.Text], [Product], ['query']),
     'getProducts' : IDL.Func([], [IDL.Vec(Product)], ['query']),
-    'initialize' : IDL.Func([], [], []),
+    'getProductsByCategory' : IDL.Func(
+        [IDL.Text],
+        [IDL.Vec(Product)],
+        ['query'],
+      ),
+    'initializeGopiProducts' : IDL.Func([], [], []),
+    'initializeKurtiProducts' : IDL.Func([], [], []),
     'updateProduct' : IDL.Func([Product], [], []),
   });
 };

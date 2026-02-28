@@ -19,6 +19,7 @@ export default {
                 heading: ['"Playfair Display"', 'Georgia', 'serif'],
                 display: ['"Cinzel"', 'serif'],
                 body: ['"Lato"', 'sans-serif'],
+                accent: ['"Poppins"', 'sans-serif'],
             },
             colors: {
                 border: 'oklch(var(--border))',
@@ -70,7 +71,29 @@ export default {
                     'accent-foreground': 'oklch(var(--sidebar-accent-foreground))',
                     border: 'oklch(var(--sidebar-border))',
                     ring: 'oklch(var(--sidebar-ring))'
-                }
+                },
+                // Radha Krishna theme tokens
+                'peacock': {
+                    DEFAULT: 'oklch(0.32 0.09 240)',
+                    light: 'oklch(0.45 0.10 240)',
+                    dark: 'oklch(0.22 0.07 240)',
+                    deep: 'oklch(0.18 0.06 240)',
+                },
+                'divine-gold': {
+                    DEFAULT: 'oklch(0.78 0.16 80)',
+                    light: 'oklch(0.88 0.12 85)',
+                    dark: 'oklch(0.65 0.14 75)',
+                },
+                'saffron': {
+                    DEFAULT: 'oklch(0.72 0.18 55)',
+                    light: 'oklch(0.82 0.14 60)',
+                    dark: 'oklch(0.60 0.16 50)',
+                },
+                'lotus': {
+                    DEFAULT: 'oklch(0.78 0.12 340)',
+                    light: 'oklch(0.88 0.08 340)',
+                    pale: 'oklch(0.94 0.05 340)',
+                },
             },
             borderRadius: {
                 lg: 'var(--radius)',
@@ -79,9 +102,11 @@ export default {
             },
             boxShadow: {
                 xs: '0 1px 2px 0 rgba(0,0,0,0.05)',
-                'warm': '0 4px 24px 0 rgba(120, 40, 20, 0.12)',
-                'warm-lg': '0 8px 40px 0 rgba(120, 40, 20, 0.18)',
-                'gold': '0 2px 12px 0 rgba(200, 160, 40, 0.25)',
+                'warm': '0 4px 24px 0 rgba(50, 80, 160, 0.12)',
+                'warm-lg': '0 8px 40px 0 rgba(50, 80, 160, 0.18)',
+                'gold': '0 2px 12px 0 rgba(200, 160, 40, 0.35)',
+                'peacock': '0 4px 24px 0 rgba(30, 60, 140, 0.20)',
+                'divine': '0 8px 40px 0 rgba(200, 160, 40, 0.25), 0 2px 8px 0 rgba(30, 60, 140, 0.15)',
             },
             keyframes: {
                 'accordion-down': {
@@ -99,13 +124,18 @@ export default {
                 'float': {
                     '0%, 100%': { transform: 'translateY(0px)' },
                     '50%': { transform: 'translateY(-6px)' },
-                }
+                },
+                'glow-pulse': {
+                    '0%, 100%': { boxShadow: '0 0 8px oklch(0.78 0.16 80 / 0.4)' },
+                    '50%': { boxShadow: '0 0 20px oklch(0.78 0.16 80 / 0.8)' },
+                },
             },
             animation: {
                 'accordion-down': 'accordion-down 0.2s ease-out',
                 'accordion-up': 'accordion-up 0.2s ease-out',
                 'shimmer': 'shimmer 2s linear infinite',
                 'float': 'float 3s ease-in-out infinite',
+                'glow-pulse': 'glow-pulse 2s ease-in-out infinite',
             }
         }
     },

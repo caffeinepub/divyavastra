@@ -2,33 +2,14 @@
   "kind": "feature_evidence_report",
   "features": [
     {
-      "featureId": "feature-create-a-homepage-for-divyavastra-that-displays-the-brand-name-prominently-a-tagline-about-gopi-skirts-and-ladies-clothing-a-featured-products-collection-section-and-a-footer-with-business-name-and-contact-placeholder",
-      "featureTitle": "Create a homepage for DivyaVastra that displays the brand name prominently, a tagline about Gopi skirts and ladies clothing, a featured products/collection section, and a footer with business name and contact placeholder.",
+      "featureId": "feature-redesign-the-entire-website-with-a-radha-krishna-devotional-theme-use-a-divine-color-palette-of-deep-peacock-blue-gold-saffron-and-lotus-pink-incorporate-decorative-motifs-such-as-peacock-feathers-flute-silhouettes-lotus-flowers-and-mandala-borders-throughout-the-ui-header-section-dividers-hero-background-cards-apply-this-theme-consistently-across-all-components-including-header-herosection-featuredproducts-aboutsection-and-footer",
+      "featureTitle": "Redesign the entire website with a Radha Krishna devotional theme — use a divine color palette of deep peacock blue, gold, saffron, and lotus pink; incorporate decorative motifs such as peacock feathers, flute silhouettes, lotus flowers, and mandala borders throughout the UI (header, section dividers, hero background, cards). Apply this theme consistently across all components including Header, HeroSection, FeaturedProducts, AboutSection, and Footer.",
       "files": [
-        "frontend/src/App.tsx",
-        "frontend/src/components/FeaturedProducts.tsx",
+        "frontend/src/components/AboutSection.tsx",
         "frontend/src/components/Footer.tsx",
         "frontend/src/components/Header.tsx",
         "frontend/src/components/HeroSection.tsx",
-        "frontend/src/pages/HomePage.tsx"
-      ],
-      "components": [
-        "blob-storage@4.0.0",
-        "core-infrastructure@1.0.2",
-        "shadcn-ui@1.0.0",
-        "build-template-react@1.0.0",
-        "initial-app@1.0.0",
-        "github-export-icp-cli@1.0.0"
-      ],
-      "testIds": [
-        "REQ-1"
-      ],
-      "confidence": "high"
-    },
-    {
-      "featureId": "feature-design-and-apply-a-warm-festive-and-elegant-visual-theme-inspired-by-traditional-indian-gopi-skirt-aesthetics-using-rich-saffron-deep-magenta-gold-and-earthy-tones-with-decorative-typography-and-flowing-layout-motifs-apply-this-theme-consistently-across-all-pages",
-      "featureTitle": "Design and apply a warm, festive, and elegant visual theme inspired by traditional Indian Gopi skirt aesthetics — using rich saffron, deep magenta, gold, and earthy tones with decorative typography and flowing layout motifs. Apply this theme consistently across all pages.",
-      "files": [
+        "frontend/src/components/ProductCard.tsx",
         "frontend/src/index.css",
         "frontend/tailwind.config.js"
       ],
@@ -41,16 +22,36 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-2"
+        "REQ-5"
       ],
       "confidence": "high"
     },
     {
-      "featureId": "feature-display-the-product-catalog-fetched-from-the-backend-on-the-homepage-collection-section-showing-each-product-s-name-price-description-and-image",
-      "featureTitle": "Display the product catalog fetched from the backend on the homepage collection section, showing each product's name, price, description, and image.",
+      "featureId": "feature-update-the-footer-component-to-replace-any-existing-whatsapp-or-placeholder-contact-link-with-the-instagram-link-https-www-instagram-com-divyavastra-igsh-egd4etc2bgl4mzn1-displaying-it-prominently-as-the-primary-contact-social-channel-with-the-instagram-icon-and-the-handle-divyavastra",
+      "featureTitle": "Update the Footer component to replace any existing WhatsApp or placeholder contact link with the Instagram link https://www.instagram.com/divyavastra_?igsh=eGd4eTc2bGl4MzN1, displaying it prominently as the primary contact/social channel with the Instagram icon and the handle @divyavastra_.",
       "files": [
-        "frontend/src/components/FeaturedProducts.tsx",
-        "frontend/src/components/ProductCard.tsx",
+        "frontend/src/components/Footer.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-6"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-add-a-dedicated-short-kurtis-section-on-the-homepage-alongside-the-existing-gopi-skirts-collection-display-short-kurti-products-in-a-cute-pretty-layout-with-pastel-floral-accents-distinct-from-the-gopi-skirts-grid-use-category-filtering-to-separate-and-display-the-two-product-categories-in-their-own-labeled-sections",
+      "featureTitle": "Add a dedicated 'Short Kurtis' section on the homepage alongside the existing Gopi Skirts collection. Display Short Kurti products in a cute, pretty layout with pastel floral accents distinct from the Gopi Skirts grid. Use category filtering to separate and display the two product categories in their own labeled sections.",
+      "files": [
+        "frontend/src/components/GopiSkirtsSection.tsx",
+        "frontend/src/components/ShortKurtisSection.tsx",
+        "frontend/src/hooks/useQueries.ts",
         "frontend/src/pages/HomePage.tsx"
       ],
       "components": [
@@ -62,7 +63,26 @@
         "github-export-icp-cli@1.0.0"
       ],
       "testIds": [
-        "REQ-4"
+        "REQ-8"
+      ],
+      "confidence": "high"
+    },
+    {
+      "featureId": "feature-use-the-uploaded-product-photos-as-product-images-in-the-catalog-map-the-uploaded-images-to-backend-product-records-use-img-4047-1-jpeg-and-img-4047-2-jpeg-for-a-gopi-skirt-product-red-gold-floral-lehenga-img-4044-1-jpeg-and-img-4044-2-jpeg-for-a-gopi-skirt-product-navy-gold-lehenga-img-4045-1-jpeg-and-img-4045-2-jpeg-for-a-gopi-skirt-product-pink-floral-lehenga-and-img-4048-1-jpeg-and-img-4048-2-jpeg-for-a-short-kurti-product-white-purple-block-print-kurti-serve-these-as-static-assets-from-frontend-public-assets-generated-and-update-the-backend-seed-imageurl-values-accordingly",
+      "featureTitle": "Use the uploaded product photos as product images in the catalog. Map the uploaded images to backend product records: use IMG_4047-1.jpeg and IMG_4047-2.jpeg for a Gopi Skirt product (red/gold floral lehenga), IMG_4044-1.jpeg and IMG_4044-2.jpeg for a Gopi Skirt product (navy/gold lehenga), IMG_4045-1.jpeg and IMG_4045-2.jpeg for a Gopi Skirt product (pink floral lehenga), and IMG_4048-1.jpeg and IMG_4048-2.jpeg for a Short Kurti product (white/purple block-print kurti). Serve these as static assets from frontend/public/assets/generated and update the backend seed imageUrl values accordingly.",
+      "files": [
+        "frontend/src/components/ProductCard.tsx"
+      ],
+      "components": [
+        "blob-storage@4.0.0",
+        "core-infrastructure@1.0.2",
+        "shadcn-ui@1.0.0",
+        "build-template-react@1.0.0",
+        "initial-app@1.0.0",
+        "github-export-icp-cli@1.0.0"
+      ],
+      "testIds": [
+        "REQ-9"
       ],
       "confidence": "high"
     }

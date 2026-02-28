@@ -1,15 +1,15 @@
 # Specification
 
 ## Summary
-**Goal:** Build a traditional Indian ladies clothing storefront homepage for DivyaVastra, showcasing Gopi skirts with a warm festive aesthetic and a product catalog fetched from the backend.
+**Goal:** Redesign the DivyaVastra website with a Radha Krishna devotional theme, add real product photos, introduce a Short Kurtis category, and update contact info to Instagram.
 
 **Planned changes:**
-- Create a homepage with a prominent hero section displaying the "DivyaVastra" brand name, logo, and a Gopi skirts tagline
-- Apply a warm, festive visual theme using saffron, magenta, gold, and earthy tones with elegant decorative typography throughout
-- Build a featured product collection grid on the homepage showing product cards with name, price, description, and image
-- Add a footer with the business name "DivyaVastra" and a contact placeholder
-- Define a Product data model in the Motoko backend with fields: id, name, description, price, category, imageUrl, and availability
-- Seed the backend with at least 4 sample Gopi skirt products
-- Expose a query function to list all products and connect it to the frontend collection section
+- Apply a Radha Krishna devotional theme across all components (Header, HeroSection, FeaturedProducts, AboutSection, Footer) using deep peacock blue, gold, saffron, and lotus pink color palette with peacock feather, flute, lotus, and mandala decorative motifs
+- Use the generated Radha Krishna hero banner as the hero section background
+- Add decorative section dividers and a brand logo emblem throughout the page
+- Replace existing contact link in Footer with Instagram link https://www.instagram.com/divyavastra_?igsh=eGd4eTc2bGl4MzN1, displaying the Instagram icon and handle @divyavastra_, opening in a new tab
+- Add a "Short Kurtis" product category to the backend with at least 3 seeded products (id, name, description, price, category, imageUrl, availability)
+- Add a dedicated "Short Kurtis" section on the homepage alongside the existing "Gopi Skirts" section, each showing only their respective category products in responsive product cards
+- Place uploaded product photos in frontend/public/assets/generated and map them to backend seed data: IMG_4047-1.jpeg / IMG_4047-2.jpeg → red/gold Gopi Skirt, IMG_4044-1.jpeg / IMG_4044-2.jpeg → navy/gold Gopi Skirt, IMG_4045-1.jpeg / IMG_4045-2.jpeg → pink floral Gopi Skirt, IMG_4048-1.jpeg / IMG_4048-2.jpeg → white/purple Short Kurti
 
-**User-visible outcome:** Visitors can browse the DivyaVastra homepage, view the brand identity with a festive Indian aesthetic, and see a catalog of Gopi skirt products fetched from the backend displayed as stylish product cards.
+**User-visible outcome:** Visitors see a beautifully themed Radha Krishna devotional storefront with real product photos, two distinct collection sections (Gopi Skirts and Short Kurtis), and an Instagram contact link in the footer.

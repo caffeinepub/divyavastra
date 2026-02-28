@@ -50,7 +50,9 @@ export interface _SERVICE {
   'deleteProduct' : ActorMethod<[string], undefined>,
   'getProductById' : ActorMethod<[string], Product>,
   'getProducts' : ActorMethod<[], Array<Product>>,
-  'initialize' : ActorMethod<[], undefined>,
+  'getProductsByCategory' : ActorMethod<[string], Array<Product>>,
+  'initializeGopiProducts' : ActorMethod<[], undefined>,
+  'initializeKurtiProducts' : ActorMethod<[], undefined>,
   'updateProduct' : ActorMethod<[Product], undefined>,
 }
 export declare const idlService: IDL.ServiceClass;
