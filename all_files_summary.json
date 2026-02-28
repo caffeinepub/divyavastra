@@ -1,0 +1,22 @@
+{
+  "backend/main.mo": "Motoko actor defining a Product catalog with CRUD operations (initialize, getProducts, getProductById, addProduct, updateProduct, deleteProduct) backed by an in-memory Map, seeded with four Gopi skirt products.",
+  "feature_evidence.json": "Feature evidence report mapping three implemented features (homepage, visual theme, product catalog display) to their corresponding frontend source files and component dependencies.",
+  "frontend-file-summaries.txt": "JSON document containing one-sentence descriptions of each frontend source file, serving as a quick reference for the project's component and hook responsibilities.",
+  "frontend/index.css": "Base Tailwind CSS file defining OKLCH-based CSS custom properties for light and dark color themes used by shadcn-ui components.",
+  "frontend/index.html": "HTML entry point for the DivyaVastra React app, mounting the app into a root div and loading the main TypeScript module.",
+  "frontend/src/App.tsx": "Root React component that renders the single-page storefront by returning the HomePage component directly.",
+  "frontend/src/components/AboutSection.tsx": "About section component displaying the DivyaVastra brand story and three feature cards (Crafted with Love, Premium Quality, Festive Elegance) with gold-accented icons on a dark crimson background.",
+  "frontend/src/components/FeaturedProducts.tsx": "Product grid section that renders skeleton loading cards, error/empty states, or a responsive 4-column grid of ProductCard components from backend data.",
+  "frontend/src/components/Footer.tsx": "Multi-column footer with brand info, social media links (Instagram, Facebook, WhatsApp), quick navigation links, and contact details on a dark background with a decorative gold gradient band.",
+  "frontend/src/components/Header.tsx": "Sticky navigation header with logo, desktop nav links, a 'Shop Now' CTA button, and a responsive mobile hamburger menu for the DivyaVastra site.",
+  "frontend/src/components/HeroSection.tsx": "Full-width hero banner section with a background image, overlay gradient, brand name, tagline, description, and CTA buttons linking to the collection and about sections.",
+  "frontend/src/components/ProductCard.tsx": "Displays a single product with its image, category tag, availability badge, name, description, INR-formatted price, and an 'Add to Cart' button.",
+  "frontend/src/hooks/useActor.ts": "Custom hook that creates and caches an ICP backend actor (anonymous or authenticated) using React Query, and invalidates dependent queries when the actor changes.",
+  "frontend/src/hooks/useInternetIdentity.ts": "Provides an Internet Identity authentication context and provider, exposing login/logout functions, identity state, and login status via a React context and custom hook.",
+  "frontend/src/hooks/useQueries.ts": "Exports useProducts (fetches product list from the backend actor) and useInitialize (mutation to seed initial products) using React Query.",
+  "frontend/src/index.css": "Global CSS file that imports Google Fonts, configures Tailwind, and defines the DivyaVastra warm Indian color palette as CSS custom properties for both light and dark modes.",
+  "frontend/src/main.tsx": "Application entry point that mounts the React app wrapped with QueryClientProvider and InternetIdentityProvider.",
+  "frontend/src/pages/HomePage.tsx": "Main page component that composes Header, HeroSection, FeaturedProducts, AboutSection, and Footer, and auto-initializes backend products if none are loaded.",
+  "frontend/tailwind.config.js": "Tailwind CSS configuration for the DivyaVastra frontend, defining custom fonts (Playfair Display, Cinzel, Lato), OKLCH-based color tokens, border radii, warm/gold box shadows, and keyframe animations including accordion and shimmer effects.",
+  "project_state.json": "Project state file tracking DivyaVastra's build progress, including completed features (homepage, Indian aesthetic theme, product catalog display) and one pending backend task (AR-3) to create a clothing product data model seeded with sample Gopi skirt products."
+}

@@ -1,0 +1,101 @@
+{
+  "kind": "implementation_plan",
+  "version": "1.0",
+  "title": "DivyaVastra – Gopi Skirts Ladies Clothing Storefront",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "summary": "Create a homepage for DivyaVastra with brand name, tagline, featured products section, and footer",
+      "acceptanceCriteria": [
+        "Brand name 'DivyaVastra' is visible in the header/hero area",
+        "A tagline referencing Gopi skirts or ladies clothing is displayed",
+        "A featured collection or product grid section is present on the homepage",
+        "Footer includes the business name 'DivyaVastra'"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/Header.tsx",
+          "operation": "create",
+          "description": "Create a Header component displaying the DivyaVastra brand logo (use generated image frontend/public/assets/generated/logo.dim_400x150.png) and navigation structure. Include the brand name prominently in the header."
+        },
+        {
+          "path": "frontend/src/components/HeroSection.tsx",
+          "operation": "create",
+          "description": "Create a HeroSection component that displays the hero banner image (frontend/public/assets/generated/hero-banner.dim_1200x500.png) with the brand tagline about Gopi skirts and ladies clothing overlaid on or near the banner."
+        },
+        {
+          "path": "frontend/src/components/FeaturedProducts.tsx",
+          "operation": "create",
+          "description": "Create a FeaturedProducts component that will display a grid of product cards. This component will receive product data as props and render each product's name, price, description, and image in a card layout."
+        },
+        {
+          "path": "frontend/src/components/Footer.tsx",
+          "operation": "create",
+          "description": "Create a Footer component displaying the business name 'DivyaVastra' and contact information placeholder. Style it to match the traditional Indian aesthetic theme."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "create",
+          "description": "Create the HomePage component that composes Header, HeroSection, FeaturedProducts, and Footer components. This serves as the main landing page for DivyaVastra."
+        },
+        {
+          "path": "frontend/src/App.tsx",
+          "operation": "modify",
+          "description": "Wire the HomePage component into the App router as the root route (/). Remove or replace any default template content with the DivyaVastra homepage."
+        }
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "summary": "Design and apply a warm, festive, elegant visual theme inspired by traditional Indian Gopi skirt aesthetics",
+      "acceptanceCriteria": [
+        "Color palette uses warm traditional tones (saffron, magenta, gold, earthy hues) — no blue or purple",
+        "Typography feels festive and elegant, fitting a traditional Indian clothing brand",
+        "Theme is applied consistently across all UI sections"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/tailwind.config.js",
+          "operation": "modify",
+          "description": "Extend the Tailwind theme with custom colors for the DivyaVastra brand: saffron (#FF9933 or similar), deep magenta (#C41E3A or similar), gold (#FFD700 or similar), and earthy tones (terracotta, warm browns). Add custom font family configuration for decorative typography if needed."
+        },
+        {
+          "path": "frontend/src/index.css",
+          "operation": "modify",
+          "description": "Define global CSS variables and styles for the DivyaVastra theme. Set up base typography with festive and elegant font choices (consider serif or decorative fonts for headings). Apply warm color scheme to body, headings, and links. Include flowing layout motifs and decorative borders that evoke traditional Indian textile patterns."
+        }
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "summary": "Display the product catalog fetched from the backend on the homepage collection section",
+      "acceptanceCriteria": [
+        "Product list is fetched from the backend canister and rendered on the frontend",
+        "Each product card shows name, price, and description",
+        "Product images are displayed in the card"
+      ],
+      "file_operations": [
+        {
+          "path": "frontend/src/components/ProductCard.tsx",
+          "operation": "create",
+          "description": "Create a ProductCard component that displays a single product with its name, price, description, and image. Accept a Product object as a prop (matching the backend Product interface from backend.d.ts). Use the product placeholder image (frontend/public/assets/generated/product-placeholder.dim_600x700.png) as a fallback if imageUrl is empty or invalid. Format the price (bigint) appropriately for display."
+        },
+        {
+          "path": "frontend/src/hooks/useProducts.ts",
+          "operation": "create",
+          "description": "Create a custom hook useProducts that fetches the product catalog from the backend using the getProducts() method from the backend interface. Handle loading and error states. Return the products array, loading state, and error state for consumption by components."
+        },
+        {
+          "path": "frontend/src/pages/HomePage.tsx",
+          "operation": "modify",
+          "description": "Update the HomePage component to use the useProducts hook to fetch product data from the backend. Pass the fetched products to the FeaturedProducts component. Display loading state while products are being fetched and error state if the fetch fails."
+        },
+        {
+          "path": "frontend/src/components/FeaturedProducts.tsx",
+          "operation": "modify",
+          "description": "Update the FeaturedProducts component to receive products array as a prop (Array<Product> from backend.d.ts) and map over it to render ProductCard components for each product. Arrange cards in a responsive grid layout."
+        }
+      ]
+    }
+  ]
+}

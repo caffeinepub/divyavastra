@@ -1,0 +1,140 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;0,900;1,400;1,600&family=Lato:wght@300;400;700&family=Cinzel:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* DivyaVastra Warm Indian Palette */
+    --background: 0.97 0.012 75;
+    --foreground: 0.18 0.04 30;
+
+    --card: 0.99 0.008 70;
+    --card-foreground: 0.18 0.04 30;
+
+    --popover: 0.99 0.008 70;
+    --popover-foreground: 0.18 0.04 30;
+
+    /* Deep Crimson / Maroon */
+    --primary: 0.38 0.16 18;
+    --primary-foreground: 0.97 0.012 75;
+
+    /* Saffron / Orange */
+    --secondary: 0.72 0.18 55;
+    --secondary-foreground: 0.18 0.04 30;
+
+    /* Gold */
+    --accent: 0.78 0.16 80;
+    --accent-foreground: 0.18 0.04 30;
+
+    --muted: 0.93 0.02 60;
+    --muted-foreground: 0.45 0.04 30;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.88 0.03 55;
+    --input: 0.88 0.03 55;
+    --ring: 0.38 0.16 18;
+
+    --chart-1: 0.72 0.18 55;
+    --chart-2: 0.38 0.16 18;
+    --chart-3: 0.78 0.16 80;
+    --chart-4: 0.55 0.14 25;
+    --chart-5: 0.65 0.12 45;
+
+    --sidebar: 0.97 0.012 75;
+    --sidebar-foreground: 0.18 0.04 30;
+    --sidebar-primary: 0.38 0.16 18;
+    --sidebar-primary-foreground: 0.97 0.012 75;
+    --sidebar-accent: 0.93 0.02 60;
+    --sidebar-accent-foreground: 0.18 0.04 30;
+    --sidebar-border: 0.88 0.03 55;
+    --sidebar-ring: 0.38 0.16 18;
+  }
+
+  .dark {
+    --background: 0.14 0.04 20;
+    --foreground: 0.95 0.015 70;
+
+    --card: 0.18 0.05 22;
+    --card-foreground: 0.95 0.015 70;
+
+    --popover: 0.18 0.05 22;
+    --popover-foreground: 0.95 0.015 70;
+
+    --primary: 0.72 0.18 55;
+    --primary-foreground: 0.14 0.04 20;
+
+    --secondary: 0.28 0.06 25;
+    --secondary-foreground: 0.95 0.015 70;
+
+    --accent: 0.78 0.16 80;
+    --accent-foreground: 0.14 0.04 20;
+
+    --muted: 0.24 0.04 22;
+    --muted-foreground: 0.65 0.04 50;
+
+    --destructive: 0.704 0.191 22.216;
+    --destructive-foreground: 0.205 0 0;
+
+    --border: 1 0 0 / 10%;
+    --input: 1 0 0 / 15%;
+    --ring: 0.72 0.18 55;
+
+    --sidebar: 0.18 0.05 22;
+    --sidebar-foreground: 0.95 0.015 70;
+    --sidebar-primary: 0.72 0.18 55;
+    --sidebar-primary-foreground: 0.14 0.04 20;
+    --sidebar-accent: 0.24 0.04 22;
+    --sidebar-accent-foreground: 0.95 0.015 70;
+    --sidebar-border: 1 0 0 / 10%;
+    --sidebar-ring: 0.72 0.18 55;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  .ornate-border {
+    border-image: repeating-linear-gradient(
+      90deg,
+      oklch(0.78 0.16 80),
+      oklch(0.72 0.18 55) 10px,
+      oklch(0.78 0.16 80) 20px
+    ) 1;
+  }
+
+  .gold-divider {
+    @apply h-px w-full;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      oklch(0.78 0.16 80),
+      oklch(0.72 0.18 55),
+      oklch(0.78 0.16 80),
+      transparent
+    );
+  }
+
+  .section-title {
+    @apply font-heading text-3xl md:text-4xl font-bold text-primary text-center;
+  }
+
+  .decorative-dot {
+    @apply inline-block w-2 h-2 rounded-full bg-accent mx-1;
+  }
+}

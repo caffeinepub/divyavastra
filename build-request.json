@@ -1,0 +1,99 @@
+{
+  "kind": "build_request",
+  "title": "DivyaVastra – Gopi Skirts Ladies Clothing Storefront",
+  "projectName": "DivyaVastra",
+  "priority": "normal",
+  "requirements": [
+    {
+      "id": "REQ-1",
+      "text": "Create a homepage for DivyaVastra that displays the brand name prominently, a tagline about Gopi skirts and ladies clothing, a featured products/collection section, and a footer with business name and contact placeholder.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "my bussiness name is divyavastra . my bussiness relate to a gopi skirts ladies clothes"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Brand name 'DivyaVastra' is visible in the header/hero area",
+        "A tagline referencing Gopi skirts or ladies clothing is displayed",
+        "A featured collection or product grid section is present on the homepage",
+        "Footer includes the business name 'DivyaVastra'"
+      ]
+    },
+    {
+      "id": "REQ-2",
+      "text": "Design and apply a warm, festive, and elegant visual theme inspired by traditional Indian Gopi skirt aesthetics — using rich saffron, deep magenta, gold, and earthy tones with decorative typography and flowing layout motifs. Apply this theme consistently across all pages.",
+      "target": "frontend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "my bussiness relate to a gopi skirts ladies clothes"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Color palette uses warm traditional tones (saffron, magenta, gold, earthy hues) — no blue or purple",
+        "Typography feels festive and elegant, fitting a traditional Indian clothing brand",
+        "Theme is applied consistently across all UI sections"
+      ]
+    },
+    {
+      "id": "REQ-3",
+      "text": "Create a backend data model for clothing products with fields: id, name, description, price, category (defaulting to 'Gopi Skirt'), imageUrl, and availability. Seed the backend with at least 4 sample Gopi skirt products.",
+      "target": "backend",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "my bussiness relate to a gopi skirts ladies clothes"
+        ]
+      },
+      "acceptanceCriteria": [
+        "A Product type is defined in the Motoko actor with all specified fields",
+        "At least 4 sample Gopi skirt products are pre-seeded",
+        "A query function to list all products is exposed"
+      ]
+    },
+    {
+      "id": "REQ-4",
+      "text": "Display the product catalog fetched from the backend on the homepage collection section, showing each product's name, price, description, and image.",
+      "target": "both",
+      "source": {
+        "messageIds": [
+          "msg-2"
+        ],
+        "quotes": [
+          "my bussiness relate to a gopi skirts ladies clothes"
+        ]
+      },
+      "acceptanceCriteria": [
+        "Product list is fetched from the backend canister and rendered on the frontend",
+        "Each product card shows name, price, and description",
+        "Product images are displayed in the card"
+      ]
+    }
+  ],
+  "constraints": [
+    "All Motoko logic must remain in the single backend/main.mo actor file",
+    "Do not edit any files under frontend/src/hooks/ or frontend/src/components/ui"
+  ],
+  "nonGoals": [
+    "Payment processing or checkout functionality",
+    "User authentication or login",
+    "Order management or cart system",
+    "Admin dashboard for product management"
+  ],
+  "imageRequirements": {
+    "required": [
+      "Hero banner with colorful flowing Gopi skirts fabric pattern in saffron, magenta, and gold tones with floral and paisley motifs (hero-banner.dim_1200x500.png)",
+      "DivyaVastra brand logo with decorative Indian-style lettering in gold on a deep red background (logo.dim_400x150.png)",
+      "Product placeholder image showing a vibrant Gopi skirt in rich colors (product-placeholder.dim_600x700.png)"
+    ],
+    "edits": []
+  }
+}
