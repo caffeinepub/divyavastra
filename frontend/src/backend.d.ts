@@ -14,7 +14,7 @@ export interface Product {
     available: boolean;
     imageUrl: string;
     category: string;
-    price: bigint;
+    price?: bigint;
 }
 export interface backendInterface {
     addProduct(product: Product): Promise<void>;
@@ -22,7 +22,9 @@ export interface backendInterface {
     getProductById(id: string): Promise<Product>;
     getProducts(): Promise<Array<Product>>;
     getProductsByCategory(category: string): Promise<Array<Product>>;
-    initializeGopiProducts(): Promise<void>;
-    initializeKurtiProducts(): Promise<void>;
+    initializeGopiDresses(): Promise<void>;
+    initializeJaipuriSkirts(): Promise<void>;
+    initializeKurtis(): Promise<void>;
+    initializeSarees(): Promise<void>;
     updateProduct(product: Product): Promise<void>;
 }

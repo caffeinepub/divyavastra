@@ -28,37 +28,75 @@ export function useProductsByCategory(category: string) {
   });
 }
 
-export function useInitializeGopi() {
+export function useInitializeJaipuriSkirts() {
   const { actor } = useActor();
   const queryClient = useQueryClient();
 
   return useMutation({
     mutationFn: async () => {
       if (!actor) throw new Error('Actor not available');
-      return actor.initializeGopiProducts();
+      return actor.initializeJaipuriSkirts();
     },
     onSuccess: () => {
       queryClient.invalidateQueries({ queryKey: ['products'] });
     },
   });
+}
+
+export function useInitializeKurtis() {
+  const { actor } = useActor();
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async () => {
+      if (!actor) throw new Error('Actor not available');
+      return actor.initializeKurtis();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['products'] });
+    },
+  });
+}
+
+export function useInitializeSarees() {
+  const { actor } = useActor();
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async () => {
+      if (!actor) throw new Error('Actor not available');
+      return actor.initializeSarees();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['products'] });
+    },
+  });
+}
+
+export function useInitializeGopiDresses() {
+  const { actor } = useActor();
+  const queryClient = useQueryClient();
+
+  return useMutation({
+    mutationFn: async () => {
+      if (!actor) throw new Error('Actor not available');
+      return actor.initializeGopiDresses();
+    },
+    onSuccess: () => {
+      queryClient.invalidateQueries({ queryKey: ['products'] });
+    },
+  });
+}
+
+// Backward compat aliases
+export function useInitializeGopi() {
+  return useInitializeJaipuriSkirts();
 }
 
 export function useInitializeKurti() {
-  const { actor } = useActor();
-  const queryClient = useQueryClient();
-
-  return useMutation({
-    mutationFn: async () => {
-      if (!actor) throw new Error('Actor not available');
-      return actor.initializeKurtiProducts();
-    },
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['products'] });
-    },
-  });
+  return useInitializeKurtis();
 }
 
-// Keep backward compat alias
 export function useInitialize() {
-  return useInitializeGopi();
+  return useInitializeJaipuriSkirts();
 }

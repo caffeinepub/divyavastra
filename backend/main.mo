@@ -2,6 +2,7 @@ import Array "mo:core/Array";
 import MixinStorage "blob-storage/Mixin";
 import Map "mo:core/Map";
 import Migration "migration";
+import Nat "mo:core/Nat";
 import Runtime "mo:core/Runtime";
 import Text "mo:core/Text";
 
@@ -13,7 +14,7 @@ actor {
     id : Text;
     name : Text;
     description : Text;
-    price : Nat;
+    price : ?Nat;
     category : Text;
     imageUrl : Text;
     available : Bool;
@@ -21,99 +22,70 @@ actor {
 
   let products : Map.Map<Text, Product> = Map.empty<Text, Product>();
 
-  // Seed initial Gopi Skirt products
-  public shared ({ caller }) func initializeGopiProducts() : async () {
+  public shared ({ caller }) func initializeJaipuriSkirts() : async () {
     if (products.size() > 0) {
-      Runtime.trap("Gopi Skirt products already initialized");
+      Runtime.trap("Jaipuri Skirts already initialized");
     };
-    let initialProducts : [Product] = [
+    let jaipuriProducts : [Product] = [
       {
         id = "1";
         name = "Red/Gold Floral Lehenga";
-        description = "A beautiful red Gopi skirt with gold floral patterns.";
-        price = 2500;
-        category = "Gopi Skirt";
+        description = "A beautiful red Jaipuri skirt with gold floral patterns.";
+        price = null;
+        category = "Jaipuri Skirt";
         imageUrl = "/assets/generated/IMG_4047-1.jpeg";
         available = true;
       },
       {
         id = "2";
         name = "Navy/Gold Lehenga";
-        description = "Elegant navy Gopi skirt perfect for festivals with gold accents.";
-        price = 2700;
-        category = "Gopi Skirt";
+        description = "Elegant navy Jaipuri skirt perfect for festivals with gold accents.";
+        price = null;
+        category = "Jaipuri Skirt";
         imageUrl = "/assets/generated/IMG_4044-1.jpeg";
         available = true;
       },
       {
         id = "3";
         name = "Pink Floral Lehenga";
-        description = "Stylish pink Gopi skirt with floral patterns.";
-        price = 2600;
-        category = "Gopi Skirt";
+        description = "Stylish pink Jaipuri skirt with floral patterns.";
+        price = null;
+        category = "Jaipuri Skirt";
         imageUrl = "/assets/generated/IMG_4045-1.jpeg";
-        available = true;
-      },
-      {
-        id = "4";
-        name = "Red/Gold Lehenga - Side View";
-        description = "Side view of the beautiful red Gopi skirt with gold floral patterns.";
-        price = 2500;
-        category = "Gopi Skirt";
-        imageUrl = "/assets/generated/IMG_4047-2.jpeg";
-        available = true;
-      },
-      {
-        id = "5";
-        name = "Navy/Gold Lehenga - Side View";
-        description = "Side view of the elegant navy Gopi skirt with gold accents.";
-        price = 2700;
-        category = "Gopi Skirt";
-        imageUrl = "/assets/generated/IMG_4044-2.jpeg";
-        available = true;
-      },
-      {
-        id = "6";
-        name = "Pink Gopi Skirt - Floral Patterns";
-        description = "Alternative angle of the stylish pink Gopi skirt with floral patterns.";
-        price = 2600;
-        category = "Gopi Skirt";
-        imageUrl = "/assets/generated/IMG_4045-2.jpeg";
         available = true;
       },
     ];
 
-    for (product in initialProducts.values()) {
+    for (product in jaipuriProducts.values()) {
       products.add(product.id, product);
     };
   };
 
-  // Seed Short Kurti specific products
-  public shared ({ caller }) func initializeKurtiProducts() : async () {
+  public shared ({ caller }) func initializeKurtis() : async () {
     let kurtiProducts : [Product] = [
       {
-        id = "7";
+        id = "4";
         name = "White/Purple Block-Print Kurti";
         description = "Stunning white short kurti with purple block-print design.";
-        price = 1800;
+        price = null;
         category = "Short Kurti";
         imageUrl = "/assets/generated/IMG_4048-1.jpeg";
         available = true;
       },
       {
-        id = "8";
+        id = "5";
         name = "White/Purple Block-Print Kurti - Side View";
         description = "Side view of the stunning white short kurti with purple block-print design.";
-        price = 1800;
+        price = null;
         category = "Short Kurti";
         imageUrl = "/assets/generated/IMG_4048-2.jpeg";
         available = true;
       },
       {
-        id = "9";
+        id = "6";
         name = "White/Purple Block-Print Kurti - Closeup";
         description = "Closeup of the beautiful white/purple block-print kurti showing fabric details.";
-        price = 1800;
+        price = null;
         category = "Short Kurti";
         imageUrl = "/assets/generated/IMG_4048-2.jpeg";
         available = true;
@@ -121,6 +93,78 @@ actor {
     ];
 
     for (product in kurtiProducts.values()) {
+      products.add(product.id, product);
+    };
+  };
+
+  public shared ({ caller }) func initializeSarees() : async () {
+    let sareeProducts : [Product] = [
+      {
+        id = "7";
+        name = "Traditional Silk Saree";
+        description = "Elegant traditional silk saree with intricate gold border.";
+        price = null;
+        category = "Saree";
+        imageUrl = "/assets/generated/IMG_SAREE1.jpeg";
+        available = true;
+      },
+      {
+        id = "8";
+        name = "Modern Georgette Saree";
+        description = "Lightweight georgette saree with contemporary design.";
+        price = null;
+        category = "Saree";
+        imageUrl = "/assets/generated/IMG_SAREE2.jpeg";
+        available = true;
+      },
+      {
+        id = "9";
+        name = "Handloom Cotton Saree";
+        description = "Eco-friendly handloom cotton saree in vibrant colors.";
+        price = null;
+        category = "Saree";
+        imageUrl = "/assets/generated/IMG_SAREE3.jpeg";
+        available = true;
+      },
+    ];
+
+    for (product in sareeProducts.values()) {
+      products.add(product.id, product);
+    };
+  };
+
+  public shared ({ caller }) func initializeGopiDresses() : async () {
+    let gopiDressProducts : [Product] = [
+      {
+        id = "10";
+        name = "Pastel Pink Gopi Dress";
+        description = "A stunning pastel pink Gopi Dress with intricate embroidery.";
+        price = null;
+        category = "Gopi Dress";
+        imageUrl = "/assets/generated/IMG_4047-2.jpeg";
+        available = true;
+      },
+      {
+        id = "11";
+        name = "Lavender Gopi Dress";
+        description = "Elegant lavender Gopi Dress with gold accents.";
+        price = null;
+        category = "Gopi Dress";
+        imageUrl = "/assets/generated/IMG_4044-2.jpeg";
+        available = true;
+      },
+      {
+        id = "12";
+        name = "Blue Floral Gopi Dress";
+        description = "Gopi Dress featuring beautiful blue floral patterns.";
+        price = null;
+        category = "Gopi Dress";
+        imageUrl = "/assets/generated/IMG_4045-2.jpeg";
+        available = true;
+      },
+    ];
+
+    for (product in gopiDressProducts.values()) {
       products.add(product.id, product);
     };
   };

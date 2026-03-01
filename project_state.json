@@ -1,11 +1,10 @@
 {
   "schemaVersion": "1.0.0",
-  "projectStateVersion": 5,
-  "summary": "DivyaVastra is a ladies clothing business specializing in Gopi skirts and short kurtis. The project is a web presence for this clothing brand with a Radha Krishna themed interface, featuring the business name 'divyavastra', Instagram contact link, and a cute/pretty UI for both Gopi skirts and short kurtis.",
+  "projectStateVersion": 9,
+  "summary": "DivyaVastrav is a ladies clothing brand specializing in Jaipuri Skirts, Short Kurtis, and Sarees. The project is a premium e-commerce style web presence with a red aesthetic interface (shades of red, yellow, pink, golden), Royal Jaipuri pattern borders, golden floral elements, soft glowing divine background, and a cute mini Krishna-Radha cartoon illustration in the header. Products show 'Price Updating Soon' with a Buy Now button (no payment system). Instagram contact link is included. The site is mobile-friendly and responsive.",
   "architectural_notes": [],
   "known_issues": [],
   "isFixRequest": false,
-  "imageRequirements": "## Required Images\n- Wide decorative hero banner with Radha Krishna devotional illustration — peacock blue sky, golden temple pillars, lotus flowers, peacock feathers, flute motifs, and warm glowing diyas, rich saffron and gold color palette (radha-krishna-hero-banner.dim_1440x700.png)\n- Decorative horizontal divider strip with peacock feather and lotus mandala pattern in gold and teal on a deep navy background (section-divider-motif.dim_1440x80.png)\n- Circular brand logo emblem with flute and lotus motif in gold on deep blue background with ornate border (divyavastra-logo-emblem.dim_200x200.png)",
   "existing_features": [
     {
       "id": "feature-create-a-homepage-for-divyavastra-that-displays-the-brand-name-prominently-a-tagline-about-gopi-skirts-and-ladies-clothing-a-featured-products-collection-section-and-a-footer-with-business-name-and-contact-placeholder",
@@ -62,40 +61,108 @@
         "REQ-9"
       ],
       "version": 1
+    },
+    {
+      "id": "feature-redesign-the-entire-website-visual-theme-to-a-red-aesthetic-using-shades-of-red-crimson-deep-pink-golden-yellow-and-warm-pink-replace-the-existing-peacock-blue-radha-krishna-palette-with-this-new-color-scheme-apply-royal-jaipuri-pattern-borders-geometric-floral-jaipuri-style-svg-or-css-borders-as-section-dividers-and-card-borders-add-golden-floral-decorative-elements-throughout-the-background-should-feel-divine-traditional-and-jaipuri-use-a-soft-glowing-warm-gradient-deep-red-to-golden-to-soft-pink-as-the-base-update-tailwind-color-tokens-and-css-variables-to-reflect-this-palette-consistently-across-all-components-header-herosection-gopiskirtssection-shortkurtissection-aboutsection-footer-productcard",
+      "title": "Redesign the entire website visual theme to a red aesthetic using shades of red, crimson, deep pink, golden yellow, and warm pink. Replace the existing peacock-blue Radha Krishna palette with this new color scheme. Apply Royal Jaipuri pattern borders (geometric/floral Jaipuri-style SVG or CSS borders) as section dividers and card borders. Add golden floral decorative elements throughout. The background should feel divine, traditional, and Jaipuri — use a soft glowing warm gradient (deep red to golden to soft pink) as the base. Update Tailwind color tokens and CSS variables to reflect this palette consistently across all components (Header, HeroSection, GopiSkirtsSection, ShortKurtisSection, AboutSection, Footer, ProductCard).",
+      "reqIds": [
+        "REQ-10"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-cute-mini-krishna-radha-cartoon-style-illustration-in-the-header-component-small-elegant-not-too-large-approximately-48-64px-tall-the-illustration-should-complement-the-red-golden-jaipuri-theme-and-appear-next-to-the-brand-name-logo-in-the-header",
+      "title": "Add a cute mini Krishna-Radha cartoon-style illustration in the Header component — small, elegant, not too large (approximately 48–64px tall). The illustration should complement the red/golden Jaipuri theme and appear next to the brand name/logo in the header.",
+      "reqIds": [
+        "REQ-11"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-third-product-section-for-sarees-on-the-homepage-alongside-the-existing-jaipuri-skirts-formerly-gopi-skirts-and-short-kurtis-sections-rename-the-gopi-skirts-section-to-jaipuri-skirts-throughout-the-ui-seed-2-3-placeholder-saree-products-in-the-backend-with-price-updating-soon-and-a-representative-image-url-all-three-sections-should-display-products-with-price-updating-soon-label-instead-of-a-numeric-price-and-each-product-card-should-have-a-buy-now-button-that-opens-a-whatsapp-order-link-no-payment-processing-apply-hover-zoom-effect-on-all-product-images",
+      "title": "Add a third product section for 'Sarees' on the homepage, alongside the existing Jaipuri Skirts (formerly Gopi Skirts) and Short Kurtis sections. Rename the 'Gopi Skirts' section to 'Jaipuri Skirts' throughout the UI. Seed 2–3 placeholder Saree products in the backend with 'Price Updating Soon' and a representative image URL. All three sections should display products with 'Price Updating Soon' label instead of a numeric price, and each product card should have a 'Buy Now' button that opens a WhatsApp order link (no payment processing). Apply hover zoom effect on all product images.",
+      "reqIds": [
+        "REQ-12"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-redesign-the-herosection-to-feature-the-brand-name-divyavastrav-prominently-with-the-tagline-elegant-traditional-ladies-wear-the-hero-banner-should-have-a-divine-glowing-jaipuri-inspired-background-using-the-new-red-gold-palette-include-a-whatsapp-order-button-as-a-cta-in-the-hero-section-the-hero-should-also-incorporate-a-krishna-radha-aesthetic-element-illustration-or-decorative-motif",
+      "title": "Redesign the HeroSection to feature the brand name 'DivyaVastrav' prominently with the tagline 'Elegant Traditional Ladies Wear'. The hero banner should have a divine, glowing Jaipuri-inspired background (using the new red/gold palette). Include a WhatsApp Order button as a CTA in the hero section. The hero should also incorporate a Krishna-Radha aesthetic element (illustration or decorative motif).",
+      "reqIds": [
+        "REQ-13"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-aboutsection-to-describe-divyavastrav-as-a-traditional-indian-ladies-clothing-brand-specializing-in-jaipuri-skirts-short-kurtis-and-sarees-redesign-the-section-to-match-the-new-red-golden-jaipuri-theme-remove-peacock-blue-gradient-include-a-contact-section-below-or-within-about-with-a-whatsapp-order-button-and-the-instagram-link-https-www-instagram-com-divyavastra-igsh-egd4etc2bgl4mzn1",
+      "title": "Update the AboutSection to describe DivyaVastrav as a Traditional Indian Ladies Clothing Brand specializing in Jaipuri Skirts, Short Kurtis, and Sarees. Redesign the section to match the new red/golden Jaipuri theme (remove peacock blue gradient). Include a Contact Section below or within About with a WhatsApp Order button and the Instagram link https://www.instagram.com/divyavastra_?igsh=eGd4eTc2bGl4MzN1.",
+      "reqIds": [
+        "REQ-14"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-update-the-footer-component-to-include-social-media-icons-instagram-linking-to-https-www-instagram-com-divyavastra-igsh-egd4etc2bgl4mzn1-and-whatsapp-a-contact-details-placeholder-section-and-the-text-designed-with-love-at-the-bottom-restyle-the-footer-to-match-the-new-red-golden-jaipuri-theme",
+      "title": "Update the Footer component to include: social media icons (Instagram linking to https://www.instagram.com/divyavastra_?igsh=eGd4eTc2bGl4MzN1, and WhatsApp), a contact details placeholder section, and the text 'Designed with Love ❤️' at the bottom. Restyle the footer to match the new red/golden Jaipuri theme.",
+      "reqIds": [
+        "REQ-15"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-ensure-the-entire-website-is-fully-mobile-responsive-all-sections-header-hero-product-sections-about-contact-footer-must-display-correctly-on-mobile-screens-320px-768px-the-header-mobile-menu-product-grids-and-hero-banner-should-reflow-gracefully-on-small-screens",
+      "title": "Ensure the entire website is fully mobile-responsive. All sections (Header, Hero, product sections, About, Contact, Footer) must display correctly on mobile screens (320px–768px). The header mobile menu, product grids, and hero banner should reflow gracefully on small screens.",
+      "reqIds": [
+        "REQ-16"
+      ],
+      "version": 1
+    },
+    {
+      "id": "feature-add-a-dedicated-gopi-dresses-product-section-on-the-homepage-seed-2-3-gopi-dress-products-in-the-backend-under-a-gopi-dress-category-with-price-updating-soon-null-price-and-whatsapp-buy-now-buttons-display-this-section-on-the-homepage-alongside-the-existing-jaipuri-skirts-short-kurtis-and-sarees-sections-using-the-same-red-golden-jaipuri-theme-styling",
+      "title": "Add a dedicated 'Gopi Dresses' product section on the homepage. Seed 2–3 Gopi Dress products in the backend under a 'Gopi Dress' category with 'Price Updating Soon' (null price) and WhatsApp Buy Now buttons. Display this section on the homepage alongside the existing Jaipuri Skirts, Short Kurtis, and Sarees sections, using the same red/golden Jaipuri theme styling.",
+      "reqIds": [
+        "REQ-17"
+      ],
+      "version": 1
     }
   ],
   "new_feature_requests": [
     {
-      "id": "AR-3",
-      "summary": "Create a backend data model for clothing products with fields: id, name, description, price, category (defaulting to 'Gopi Skirt'), imageUrl, and availability. Seed the backend with at least 4 sample Gopi skirt products.",
+      "id": "AR-10",
+      "summary": "Redesign the website with a red aesthetic theme (shades of red, yellow, pink, golden) with Royal Jaipuri pattern borders, golden floral elements, soft glowing divine background, and a cute mini Krishna-Radha cartoon illustration in the header (cartoon style, elegant, not too big).",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-11",
+      "summary": "Add three product sections: 1) Jaipuri Skirts, 2) Short Kurti, 3) Sarees. Products should show 'Price Updating Soon' instead of prices, and have a Buy Now button without a payment system.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-12",
+      "summary": "Add homepage sections: Hero banner with brand name DivyaVastrav, Featured Collection, About Us (Traditional Indian Ladies Clothing Brand), Contact Section, and WhatsApp Order Button.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-13",
+      "summary": "Add footer with social media icons (including Instagram: https://www.instagram.com/divyavastra_?igsh=eGd4eTc2bGl4MzN1), contact details placeholder, and 'Designed with Love' text.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-14",
+      "summary": "Use provided product photos in the gallery with responsive layout, hover zoom effect on product images.",
+      "reqIds": [],
+      "status": "pending"
+    },
+    {
+      "id": "AR-16",
+      "summary": "Map the previously uploaded product images (IMG_4047-1.jpeg, IMG_4047-2.jpeg, IMG_4044-1.jpeg, IMG_4044-2.jpeg, IMG_4045-1.jpeg, IMG_4045-2.jpeg, IMG_4048-1.jpeg, IMG_4048-2.jpeg) as static assets in frontend/public/assets/generated and update the backend seed imageUrl values for all existing products (Jaipuri Skirts and Short Kurtis) to reference these local asset paths. Ensure the Gopi Dresses section products also use appropriate uploaded images from the same set if available.",
       "reqIds": [
-        "REQ-3"
-      ],
-      "status": "pending"
-    },
-    {
-      "id": "AR-4",
-      "summary": "Redesign the website with a Radha Krishna themed interface — use divine, devotional aesthetics with peacock feathers, lotus motifs, flute imagery, blue/golden color palette inspired by Radha Krishna.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-5",
-      "summary": "Add Instagram contact link (https://www.instagram.com/divyavastra_?igsh=eGd4eTc2bGl4MzN1) to the website footer/contact section.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-6",
-      "summary": "Add a dedicated section/category for Short Kurtis alongside Gopi Skirts with a cute and pretty interface for both product categories.",
-      "reqIds": [],
-      "status": "pending"
-    },
-    {
-      "id": "AR-9",
-      "summary": "Add a 'Short Kurtis' product category to the backend data model and seed at least 3 sample Short Kurti products alongside the existing Gopi Skirt products. Each product must include id, name, description, price, category ('Short Kurti'), imageUrl, and availability fields.",
-      "reqIds": [
-        "REQ-7"
+        "REQ-18"
       ],
       "status": "pending"
     }

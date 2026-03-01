@@ -17,7 +17,7 @@ export interface Product {
   'available' : boolean,
   'imageUrl' : string,
   'category' : string,
-  'price' : bigint,
+  'price' : [] | [bigint],
 }
 export interface _CaffeineStorageCreateCertificateResult {
   'method' : string,
@@ -51,8 +51,10 @@ export interface _SERVICE {
   'getProductById' : ActorMethod<[string], Product>,
   'getProducts' : ActorMethod<[], Array<Product>>,
   'getProductsByCategory' : ActorMethod<[string], Array<Product>>,
-  'initializeGopiProducts' : ActorMethod<[], undefined>,
-  'initializeKurtiProducts' : ActorMethod<[], undefined>,
+  'initializeGopiDresses' : ActorMethod<[], undefined>,
+  'initializeJaipuriSkirts' : ActorMethod<[], undefined>,
+  'initializeKurtis' : ActorMethod<[], undefined>,
+  'initializeSarees' : ActorMethod<[], undefined>,
   'updateProduct' : ActorMethod<[Product], undefined>,
 }
 export declare const idlService: IDL.ServiceClass;

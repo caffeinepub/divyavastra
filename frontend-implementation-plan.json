@@ -1,161 +1,86 @@
 {
   "kind": "implementation_plan",
   "version": "1.0",
-  "title": "Radha Krishna themed redesign with product images, Instagram contact, and Short Kurti category",
+  "title": "Add Gopi Dresses section with uploaded product images",
   "requirements": [
     {
-      "id": "REQ-5",
-      "summary": "Redesign the entire website with a Radha Krishna devotional theme using a divine color palette and decorative motifs",
+      "id": "REQ-17",
+      "summary": "Add a dedicated 'Gopi Dresses' product section on the homepage with seed products under the 'Gopi Dress' category, displaying 'Price Updating Soon' labels and WhatsApp Buy Now buttons using the red/golden Jaipuri theme styling.",
       "acceptanceCriteria": [
-        "The color palette uses deep peacock blue, gold, saffron, and lotus pink as primary tones",
-        "Decorative motifs (peacock feathers, flute, lotus, mandala) appear as dividers or accent elements throughout the page",
-        "The hero section uses the generated Radha Krishna banner image as its background",
-        "All sections (Header, HeroSection, FeaturedProducts, AboutSection, Footer) reflect the updated theme consistently"
+        "A 'Gopi Dresses' section appears on the homepage",
+        "Backend seeds 2–3 products under a 'Gopi Dress' category with null/optional price",
+        "Each product card shows 'Price Updating Soon' label",
+        "Each product card has a 'Buy Now' WhatsApp order button",
+        "Section uses the red/golden Jaipuri visual theme consistent with other sections"
       ],
       "file_operations": [
         {
-          "path": "frontend/src/index.css",
-          "operation": "modify",
-          "description": "Replace the current warm Indian color palette with the Radha Krishna devotional theme colors. Define CSS custom properties for deep peacock blue (#1e3a5f, #2563a8), gold (#d4af37, #f4d03f), saffron (#ff9933, #ffa94d), and lotus pink (#f8b3d5, #ffc0e0) for both light and dark modes. Update the base color tokens to use these divine colors throughout the application."
+          "path": "frontend/src/components/GopiDressesSection.tsx",
+          "operation": "create",
+          "description": "Create a new GopiDressesSection component that fetches products from the 'Gopi Dress' category using the useProductsByCategory hook and renders them through the FeaturedProducts component. Use the crimson accent color and include decorative Jaipuri-themed headers and dividers matching the style of GopiSkirtsSection. The component will automatically handle the 'Price Updating Soon' display through ProductCard when price is null."
         },
-        {
-          "path": "frontend/tailwind.config.js",
-          "operation": "modify",
-          "description": "Extend the Tailwind configuration to include custom Radha Krishna theme utilities. Add custom color tokens for peacock-blue, gold, saffron, and lotus-pink that map to the CSS custom properties. Include decorative shadow utilities with gold/saffron glows for divine accents. Ensure the theme colors integrate with existing shadcn-ui component styles."
-        },
-        {
-          "path": "frontend/src/components/Header.tsx",
-          "operation": "modify",
-          "description": "Redesign the Header with the Radha Krishna theme. Apply a peacock blue background with gold accent borders. Add subtle decorative peacock feather or mandala motifs as background elements or dividers. Update text colors to use gold for the brand name and navigation links. Ensure the logo area can accommodate the generated circular brand logo emblem (frontend/public/assets/generated/divyavastra-logo-emblem.dim_200x200.png). Maintain responsive mobile menu functionality while applying the new theme."
-        },
-        {
-          "path": "frontend/src/components/HeroSection.tsx",
-          "operation": "modify",
-          "description": "Transform the HeroSection to use the generated Radha Krishna hero banner (frontend/public/assets/generated/radha-krishna-hero-banner.dim_1440x700.png) as the background image. Apply an overlay gradient using peacock blue and saffron tones to ensure text readability. Update heading and tagline text colors to gold and lotus pink for divine elegance. Add subtle decorative borders with lotus or flute motifs around the content area. Style CTA buttons with gold backgrounds and peacock blue hover states."
-        },
-        {
-          "path": "frontend/src/components/FeaturedProducts.tsx",
-          "operation": "modify",
-          "description": "Update the FeaturedProducts section with Radha Krishna themed styling. Add a section header with decorative mandala or lotus divider elements using the generated section divider image (frontend/public/assets/generated/section-divider-motif.dim_1440x80.png). Apply a background with subtle peacock blue tones or gradients. Add decorative peacock feather accents between product rows or as corner ornaments. Ensure the product grid maintains its responsive 4-column layout while incorporating the new color scheme for borders and shadows with gold/saffron highlights."
-        },
-        {
-          "path": "frontend/src/components/ProductCard.tsx",
-          "operation": "modify",
-          "description": "Redesign the ProductCard component with devotional theme styling. Apply borders with gold/saffron accent colors and subtle peacock blue shadows. Update category tags to use saffron backgrounds with gold text. Style availability badges with lotus pink for available items. Format the price display with gold color. Update the 'Add to Cart' button with a gold background, peacock blue text, and hover effects using saffron tones. Add subtle decorative corner flourishes or border patterns inspired by mandala motifs."
-        },
-        {
-          "path": "frontend/src/components/AboutSection.tsx",
-          "operation": "modify",
-          "description": "Redesign the AboutSection with Radha Krishna theme aesthetics. Replace the current dark crimson background with a peacock blue gradient. Update the gold-accented icons to use the new gold color tokens with lotus or flute motifs. Apply decorative mandala or peacock feather dividers between feature cards. Style the feature cards with lotus pink accents and gold borders. Update text colors to ensure readability with the new color scheme. Add the section divider motif image (frontend/public/assets/generated/section-divider-motif.dim_1440x80.png) as a decorative element at the top or bottom of the section."
-        },
-        {
-          "path": "frontend/src/components/Footer.tsx",
-          "operation": "modify",
-          "description": "Redesign the Footer with Radha Krishna devotional theme colors. Apply a deep peacock blue background with gold decorative borders or the decorative gradient band updated to gold and saffron tones. Add subtle lotus flower or peacock feather motifs as background decorations. Update all text colors to gold or lotus pink for headings and links. Ensure the multi-column layout remains intact while applying the new theme consistently across brand info, navigation links, and contact details sections."
-        }
-      ]
-    },
-    {
-      "id": "REQ-6",
-      "summary": "Update the Footer component to replace contact links with the Instagram link as the primary contact channel",
-      "acceptanceCriteria": [
-        "Footer displays an Instagram icon linking to https://www.instagram.com/divyavastra_?igsh=eGd4eTc2bGl4MzN1",
-        "The Instagram handle @divyavastra_ is visible as the label",
-        "The link opens in a new tab"
-      ],
-      "file_operations": [
-        {
-          "path": "frontend/src/components/Footer.tsx",
-          "operation": "modify",
-          "description": "Replace any existing WhatsApp or placeholder contact links in the Footer with the Instagram link https://www.instagram.com/divyavastra_?igsh=eGd4eTc2bGl4MzN1. Display the Instagram icon (using an appropriate icon library like lucide-react) alongside the handle @divyavastra_. Position it prominently in the social media or contact section. Ensure the link opens in a new tab (target='_blank' rel='noopener noreferrer'). Style the Instagram link with gold or lotus pink colors matching the Radha Krishna theme. Remove or de-emphasize other social links if present to make Instagram the primary contact channel."
-        }
-      ]
-    },
-    {
-      "id": "REQ-8",
-      "summary": "Add a dedicated 'Short Kurtis' section on the homepage alongside the existing Gopi Skirts collection with category filtering",
-      "acceptanceCriteria": [
-        "Homepage has two distinct labeled collection sections: 'Gopi Skirts' and 'Short Kurtis'",
-        "Each section only shows products of its respective category",
-        "The Short Kurtis section uses a visually distinct but complementary cute/floral styling",
-        "Both sections are responsive and display product cards with name, price, description, and image"
-      ],
-      "file_operations": [
         {
           "path": "frontend/src/hooks/useQueries.ts",
           "operation": "modify",
-          "description": "Add a new React Query hook useProductsByCategory that calls the backend getProductsByCategory capability with a category parameter. Export this hook alongside the existing useProducts hook. This enables the frontend to fetch products filtered by category ('Gopi Skirt' or 'Short Kurti') for display in separate sections."
+          "description": "Add a useInitializeGopiDresses mutation hook that calls the backend initializeGopiDresses method to seed the initial Gopi Dress products. Follow the same pattern as the existing useInitializeJaipuriSkirts, useInitializeKurtis, and useInitializeSarees hooks."
         },
         {
           "path": "frontend/src/pages/HomePage.tsx",
           "operation": "modify",
-          "description": "Update the HomePage to render two separate product collection sections instead of a single FeaturedProducts component. Use the useProductsByCategory hook to fetch 'Gopi Skirt' products for the first section and 'Short Kurti' products for the second section. Ensure both sections maintain the Radha Krishna theme styling and handle loading/error states independently. Position the sections in a vertical layout with appropriate spacing and decorative dividers between them."
-        },
-        {
-          "path": "frontend/src/components/GopiSkirtsSection.tsx",
-          "operation": "create",
-          "description": "Create a new GopiSkirtsSection component that displays the Gopi Skirts collection. Fetch products using useProductsByCategory('Gopi Skirt'). Render a section header labeled 'Gopi Skirts' with the Radha Krishna theme styling (peacock blue background, gold text, decorative mandala or peacock feather elements). Display the products in a responsive 4-column grid using ProductCard components. Include loading skeleton states and error handling. Apply the section divider motif image (frontend/public/assets/generated/section-divider-motif.dim_1440x80.png) as a decorative separator at the top or bottom of the section."
-        },
-        {
-          "path": "frontend/src/components/ShortKurtisSection.tsx",
-          "operation": "create",
-          "description": "Create a new ShortKurtisSection component that displays the Short Kurtis collection. Fetch products using useProductsByCategory('Short Kurti'). Render a section header labeled 'Short Kurtis' with a cute, pretty aesthetic complementary to the Radha Krishna theme — use softer lotus pink backgrounds, pastel floral accent borders, and gold text. Display the products in a responsive 4-column grid using ProductCard components with additional pastel floral decorative elements or corner flourishes. Include loading skeleton states and error handling. Ensure the styling is visually distinct from GopiSkirtsSection while maintaining theme coherence."
+          "description": "Import and render the new GopiDressesSection component in the page composition, positioned after GopiSkirtsSection and before ShortKurtisSection to maintain logical category flow. Add the useInitializeGopiDresses mutation to the initialization logic in the useEffect, calling mutate() alongside the existing initialization mutations."
         }
       ]
     },
     {
-      "id": "REQ-9",
-      "summary": "Use the uploaded product photos as product images in the catalog by serving them as static assets",
+      "id": "REQ-18",
+      "summary": "Map the previously uploaded product images (IMG_4047-1.jpeg, IMG_4047-2.jpeg, IMG_4044-1.jpeg, IMG_4044-2.jpeg, IMG_4045-1.jpeg, IMG_4045-2.jpeg, IMG_4048-1.jpeg, IMG_4048-2.jpeg) as static assets in frontend/public/assets/generated and ensure frontend references these local asset paths for all products.",
       "acceptanceCriteria": [
-        "Product images from the uploaded photos are placed in frontend/public/assets/generated",
-        "Backend seed data references the correct static asset paths for each product",
-        "ProductCard components render the actual product photos"
+        "IMG_4047-1.jpeg, IMG_4044-1.jpeg, IMG_4045-1.jpeg are served from frontend/public/assets/generated",
+        "IMG_4048-1.jpeg is served from frontend/public/assets/generated",
+        "Backend seed imageUrl values for Jaipuri Skirt products point to /assets/generated/IMG_4047-1.jpeg, /assets/generated/IMG_4044-1.jpeg, /assets/generated/IMG_4045-1.jpeg respectively",
+        "Backend seed imageUrl for Short Kurti product points to /assets/generated/IMG_4048-1.jpeg",
+        "Product images render correctly in their respective section cards on the homepage"
       ],
       "file_operations": [
         {
           "path": "frontend/public/assets/generated/IMG_4047-1.jpeg",
           "operation": "create",
-          "description": "Place the uploaded product image IMG_4047-1.jpeg (red/gold floral lehenga, primary view) into frontend/public/assets/generated/ to serve as a static asset for a Gopi Skirt product."
-        },
-        {
-          "path": "frontend/public/assets/generated/IMG_4047-2.jpeg",
-          "operation": "create",
-          "description": "Place the uploaded product image IMG_4047-2.jpeg (red/gold floral lehenga, alternate view) into frontend/public/assets/generated/ to serve as a static asset for a Gopi Skirt product."
+          "description": "Copy the uploaded image IMG_4047-1.jpeg to the frontend/public/assets/generated directory to serve as a static asset for Jaipuri Skirt product 1. This file is already available in the workspace assets."
         },
         {
           "path": "frontend/public/assets/generated/IMG_4044-1.jpeg",
           "operation": "create",
-          "description": "Place the uploaded product image IMG_4044-1.jpeg (navy/gold lehenga, primary view) into frontend/public/assets/generated/ to serve as a static asset for a Gopi Skirt product."
-        },
-        {
-          "path": "frontend/public/assets/generated/IMG_4044-2.jpeg",
-          "operation": "create",
-          "description": "Place the uploaded product image IMG_4044-2.jpeg (navy/gold lehenga, alternate view) into frontend/public/assets/generated/ to serve as a static asset for a Gopi Skirt product."
+          "description": "Copy the uploaded image IMG_4044-1.jpeg to the frontend/public/assets/generated directory to serve as a static asset for Jaipuri Skirt product 2. This file is already available in the workspace assets."
         },
         {
           "path": "frontend/public/assets/generated/IMG_4045-1.jpeg",
           "operation": "create",
-          "description": "Place the uploaded product image IMG_4045-1.jpeg (pink floral lehenga, primary view) into frontend/public/assets/generated/ to serve as a static asset for a Gopi Skirt product."
-        },
-        {
-          "path": "frontend/public/assets/generated/IMG_4045-2.jpeg",
-          "operation": "create",
-          "description": "Place the uploaded product image IMG_4045-2.jpeg (pink floral lehenga, alternate view) into frontend/public/assets/generated/ to serve as a static asset for a Gopi Skirt product."
+          "description": "Copy the uploaded image IMG_4045-1.jpeg to the frontend/public/assets/generated directory to serve as a static asset for Jaipuri Skirt product 3. This file is already available in the workspace assets."
         },
         {
           "path": "frontend/public/assets/generated/IMG_4048-1.jpeg",
           "operation": "create",
-          "description": "Place the uploaded product image IMG_4048-1.jpeg (white/purple block-print kurti, primary view) into frontend/public/assets/generated/ to serve as a static asset for a Short Kurti product."
+          "description": "Copy the uploaded image IMG_4048-1.jpeg to the frontend/public/assets/generated directory to serve as a static asset for Short Kurti product. This file is already available in the workspace assets."
+        },
+        {
+          "path": "frontend/public/assets/generated/IMG_4047-2.jpeg",
+          "operation": "create",
+          "description": "Copy the uploaded image IMG_4047-2.jpeg to the frontend/public/assets/generated directory to serve as a static asset for potential use in Gopi Dresses or other products. This file is already available in the workspace assets."
+        },
+        {
+          "path": "frontend/public/assets/generated/IMG_4044-2.jpeg",
+          "operation": "create",
+          "description": "Copy the uploaded image IMG_4044-2.jpeg to the frontend/public/assets/generated directory to serve as a static asset for potential use in Gopi Dresses or other products. This file is already available in the workspace assets."
+        },
+        {
+          "path": "frontend/public/assets/generated/IMG_4045-2.jpeg",
+          "operation": "create",
+          "description": "Copy the uploaded image IMG_4045-2.jpeg to the frontend/public/assets/generated directory to serve as a static asset for potential use in Gopi Dresses or other products. This file is already available in the workspace assets."
         },
         {
           "path": "frontend/public/assets/generated/IMG_4048-2.jpeg",
           "operation": "create",
-          "description": "Place the uploaded product image IMG_4048-2.jpeg (white/purple block-print kurti, alternate view) into frontend/public/assets/generated/ to serve as a static asset for a Short Kurti product."
-        },
-        {
-          "path": "frontend/src/components/ProductCard.tsx",
-          "operation": "modify",
-          "description": "Ensure the ProductCard component correctly renders product images from the imageUrl field provided by the backend. The imageUrl will reference static asset paths like /assets/generated/IMG_4047-1.jpeg. Verify that the img element uses the imageUrl prop directly without transformation. Add appropriate alt text using the product name. Ensure images are responsive and maintain aspect ratio within the card layout. Apply loading states or placeholder images if the imageUrl is empty or the image fails to load."
+          "description": "Copy the uploaded image IMG_4048-2.jpeg to the frontend/public/assets/generated directory to serve as a static asset for potential use in Gopi Dresses or other products. This file is already available in the workspace assets."
         }
       ]
     }

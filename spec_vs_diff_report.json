@@ -1,67 +1,43 @@
 {
   "kind": "spec_vs_diff_report",
   "version": "1.0",
-  "generatedAt": "2026-02-28T19:10:58.493Z",
-  "summary": "The diff implements the majority of the build requirements. REQ-5 (Radha Krishna theme), REQ-6 (Instagram footer), REQ-7 (Short Kurti backend), REQ-8 (Short Kurtis section), and REQ-9 (product image mapping) are all substantially addressed. However, the hooks directory was modified (useQueries.ts was changed to add useProductsByCategory and useInitializeKurti), which violates the explicit constraint 'Do not edit files under frontend/src/hooks/'. Additionally, REQ-9 requires actual image files placed in frontend/public/assets/generated but no image files appear in the added files list.",
+  "generatedAt": "2026-03-01T15:53:42.430Z",
+  "summary": "The diff implements both REQ-17 and REQ-18 with strong coverage. A GopiDressesSection component is added, backend seeds Gopi Dress products, the homepage includes the new section, and image URLs are updated to local asset paths. However, the diff does not show the actual static image files being added to frontend/public/assets/generated. The constraint about not modifying immutable frontend paths (hooks) appears violated as useQueries.ts was modified.",
   "missing_requirements": [
     {
-      "requirement": "Do not edit files under frontend/src/hooks/ — this is an explicit constraint in the build request",
-      "reason": "frontend/src/hooks/useQueries.ts was modified to add useProductsByCategory, useInitializeKurti, and useInitialize functions. The constraint explicitly forbids editing files under frontend/src/hooks/.",
+      "id": "REQ-18",
+      "requirement": "IMG_4047-1.jpeg, IMG_4047-2.jpeg, IMG_4044-1.jpeg, IMG_4044-2.jpeg, IMG_4045-1.jpeg, IMG_4045-2.jpeg, IMG_4048-1.jpeg, IMG_4048-2.jpeg must be mapped as static assets in frontend/public/assets/generated",
+      "reason": "The diff shows no added image files in frontend/public/assets/generated. The backend seed references these paths but the actual static asset files are not shown as added in the diff (Added: 2 files — only migration.mo and GopiDressesSection.tsx are listed as added).",
       "evidence": [
-        "frontend/src/hooks/useQueries.ts"
-      ]
-    },
-    {
-      "id": "REQ-9",
-      "requirement": "Product images from the uploaded photos are placed in frontend/public/assets/generated",
-      "reason": "The diff shows backend seed data referencing paths like /assets/generated/IMG_4047-1.jpeg and ProductCard rendering those paths, but there is no evidence in the diff that the actual image files were added to frontend/public/assets/generated. No new image files appear in the Added files list.",
-      "evidence": [
-        "backend/main.mo",
-        "frontend/src/components/ProductCard.tsx"
+        "frontend/public/assets/generated"
       ]
     }
   ],
   "hallucinated_features": [
     {
-      "description": "Migration module added for stable memory migration",
-      "reason": "The build request did not request any backend migration infrastructure. A migration.mo file was added and integrated into main.mo with 'with migration = Migration.run', which was not part of any requirement.",
+      "description": "A migration module (backend/migration.mo) was added with a run function that maps old products to new products setting available=true",
+      "reason": "The build request did not request any migration module or data migration logic. This is extra functionality not mentioned in REQ-17 or REQ-18.",
       "evidence": [
-        "backend/migration.mo",
-        "backend/main.mo"
+        "backend/migration.mo"
       ]
     },
     {
-      "description": "Separate initializeGopiProducts and initializeKurtiProducts public backend functions",
-      "reason": "The build request specified seeding products but did not specify splitting initialization into two separate public endpoints with sequential calling logic from the frontend.",
+      "description": "useQueries.ts was modified to add useInitializeGopiDresses and backward-compat alias hooks",
+      "reason": "The build request explicitly states immutable frontend paths including hooks must not be modified. The hooks file was modified, violating this constraint.",
       "evidence": [
-        "backend/main.mo",
-        "frontend/src/pages/HomePage.tsx"
-      ]
-    },
-    {
-      "description": "ProductCard accentColor prop with dual-mode peacock and lotus styling",
-      "reason": "The build request asked for visually distinct sections but did not specify a dual-mode ProductCard component with an accentColor prop as a specific implementation detail.",
-      "evidence": [
-        "frontend/src/components/ProductCard.tsx"
+        "frontend/src/hooks/useQueries.ts"
       ]
     }
   ],
-  "confidence": 0.78,
+  "confidence": 0.72,
   "changed_files": [
     "backend/main.mo",
     "backend/migration.mo",
     "frontend-file-summaries.txt",
-    "frontend/src/components/AboutSection.tsx",
-    "frontend/src/components/Footer.tsx",
-    "frontend/src/components/GopiSkirtsSection.tsx",
+    "frontend/src/components/GopiDressesSection.tsx",
     "frontend/src/components/Header.tsx",
-    "frontend/src/components/HeroSection.tsx",
-    "frontend/src/components/ProductCard.tsx",
-    "frontend/src/components/ShortKurtisSection.tsx",
     "frontend/src/hooks/useQueries.ts",
-    "frontend/src/index.css",
     "frontend/src/pages/HomePage.tsx",
-    "frontend/tailwind.config.js",
     "project_state.json"
   ]
 }

@@ -1,92 +1,45 @@
 {
   "kind": "coverage_report",
   "version": "1.0",
-  "generatedAt": "2026-02-28T19:10:58.498Z",
+  "generatedAt": "2026-03-01T15:53:42.434Z",
   "sources": {
     "buildRequest": true,
     "implementationPlan": true
   },
   "requirements": {
-    "total": 5,
-    "implemented": 4,
+    "total": 2,
+    "implemented": 1,
     "items": [
       {
-        "id": "REQ-5",
-        "summary": "Redesign the entire website with a Radha Krishna devotional theme — use a divine color palette of deep peacock blue, gold, saffron, and lotus pink; incorporate decorative motifs such as peacock feathers, flute silhouettes, lotus flowers, and mandala borders throughout the UI (header, section dividers, hero background, cards). Apply this theme consistently across all components including Header, HeroSection, FeaturedProducts, AboutSection, and Footer.",
+        "id": "REQ-17",
+        "summary": "Add a dedicated 'Gopi Dresses' product section on the homepage. Seed 2–3 Gopi Dress products in the backend under a 'Gopi Dress' category with 'Price Updating Soon' (null price) and WhatsApp Buy Now buttons. Display this section on the homepage alongside the existing Jaipuri Skirts, Short Kurtis, and Sarees sections, using the same red/golden Jaipuri theme styling.",
         "status": "implemented",
         "plannedFiles": [
-          "frontend/src/index.css",
-          "frontend/tailwind.config.js",
-          "frontend/src/components/Header.tsx",
-          "frontend/src/components/HeroSection.tsx",
-          "frontend/src/components/FeaturedProducts.tsx",
-          "frontend/src/components/ProductCard.tsx",
-          "frontend/src/components/AboutSection.tsx",
-          "frontend/src/components/Footer.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/index.css",
-          "frontend/tailwind.config.js",
-          "frontend/src/components/Header.tsx",
-          "frontend/src/components/HeroSection.tsx",
-          "frontend/src/components/ProductCard.tsx",
-          "frontend/src/components/AboutSection.tsx",
-          "frontend/src/components/Footer.tsx"
-        ]
-      },
-      {
-        "id": "REQ-6",
-        "summary": "Update the Footer component to replace any existing WhatsApp or placeholder contact link with the Instagram link https://www.instagram.com/divyavastra_?igsh=eGd4eTc2bGl4MzN1, displaying it prominently as the primary contact/social channel with the Instagram icon and the handle @divyavastra_.",
-        "status": "implemented",
-        "plannedFiles": [
-          "frontend/src/components/Footer.tsx"
-        ],
-        "matchedFiles": [
-          "frontend/src/components/Footer.tsx"
-        ]
-      },
-      {
-        "id": "REQ-7",
-        "summary": "Add a 'Short Kurtis' product category to the backend data model and seed at least 3 sample Short Kurti products alongside the existing Gopi Skirt products. Each product must include id, name, description, price, category ('Short Kurti'), imageUrl, and availability fields.",
-        "status": "unknown",
-        "plannedFiles": [],
-        "matchedFiles": []
-      },
-      {
-        "id": "REQ-8",
-        "summary": "Add a dedicated 'Short Kurtis' section on the homepage alongside the existing Gopi Skirts collection. Display Short Kurti products in a cute, pretty layout with pastel floral accents distinct from the Gopi Skirts grid. Use category filtering to separate and display the two product categories in their own labeled sections.",
-        "status": "implemented",
-        "plannedFiles": [
+          "frontend/src/components/GopiDressesSection.tsx",
           "frontend/src/hooks/useQueries.ts",
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/components/GopiSkirtsSection.tsx",
-          "frontend/src/components/ShortKurtisSection.tsx"
+          "frontend/src/pages/HomePage.tsx"
         ],
         "matchedFiles": [
+          "frontend/src/components/GopiDressesSection.tsx",
           "frontend/src/hooks/useQueries.ts",
-          "frontend/src/pages/HomePage.tsx",
-          "frontend/src/components/GopiSkirtsSection.tsx",
-          "frontend/src/components/ShortKurtisSection.tsx"
+          "frontend/src/pages/HomePage.tsx"
         ]
       },
       {
-        "id": "REQ-9",
-        "summary": "Use the uploaded product photos as product images in the catalog. Map the uploaded images to backend product records: use IMG_4047-1.jpeg and IMG_4047-2.jpeg for a Gopi Skirt product (red/gold floral lehenga), IMG_4044-1.jpeg and IMG_4044-2.jpeg for a Gopi Skirt product (navy/gold lehenga), IMG_4045-1.jpeg and IMG_4045-2.jpeg for a Gopi Skirt product (pink floral lehenga), and IMG_4048-1.jpeg and IMG_4048-2.jpeg for a Short Kurti product (white/purple block-print kurti). Serve these as static assets from frontend/public/assets/generated and update the backend seed imageUrl values accordingly.",
-        "status": "implemented",
+        "id": "REQ-18",
+        "summary": "Map the previously uploaded product images (IMG_4047-1.jpeg, IMG_4047-2.jpeg, IMG_4044-1.jpeg, IMG_4044-2.jpeg, IMG_4045-1.jpeg, IMG_4045-2.jpeg, IMG_4048-1.jpeg, IMG_4048-2.jpeg) as static assets in frontend/public/assets/generated and update the backend seed imageUrl values for all existing products (Jaipuri Skirts and Short Kurtis) to reference these local asset paths. Ensure the Gopi Dresses section products also use appropriate uploaded images from the same set if available.",
+        "status": "missing",
         "plannedFiles": [
           "frontend/public/assets/generated/IMG_4047-1.jpeg",
-          "frontend/public/assets/generated/IMG_4047-2.jpeg",
           "frontend/public/assets/generated/IMG_4044-1.jpeg",
-          "frontend/public/assets/generated/IMG_4044-2.jpeg",
           "frontend/public/assets/generated/IMG_4045-1.jpeg",
-          "frontend/public/assets/generated/IMG_4045-2.jpeg",
           "frontend/public/assets/generated/IMG_4048-1.jpeg",
-          "frontend/public/assets/generated/IMG_4048-2.jpeg",
-          "frontend/src/components/ProductCard.tsx"
+          "frontend/public/assets/generated/IMG_4047-2.jpeg",
+          "frontend/public/assets/generated/IMG_4044-2.jpeg",
+          "frontend/public/assets/generated/IMG_4045-2.jpeg",
+          "frontend/public/assets/generated/IMG_4048-2.jpeg"
         ],
-        "matchedFiles": [
-          "frontend/src/components/ProductCard.tsx"
-        ]
+        "matchedFiles": []
       }
     ]
   },
@@ -94,28 +47,17 @@
     "backend/main.mo",
     "backend/migration.mo",
     "build-request.json",
-    "build-template/README.md",
     "feature_evidence.json",
     "frontend-file-summaries.txt",
     "frontend-implementation-plan.json",
-    "frontend/public/assets/generated/divyavastra-logo-emblem.dim_200x200.png",
-    "frontend/public/assets/generated/radha-krishna-hero-banner.dim_1440x700.png",
-    "frontend/public/assets/generated/section-divider-motif.dim_1440x80.png",
     "frontend/src/backend.d.ts",
     "frontend/src/backend.ts",
-    "frontend/src/components/AboutSection.tsx",
-    "frontend/src/components/Footer.tsx",
-    "frontend/src/components/GopiSkirtsSection.tsx",
+    "frontend/src/components/GopiDressesSection.tsx",
     "frontend/src/components/Header.tsx",
-    "frontend/src/components/HeroSection.tsx",
-    "frontend/src/components/ProductCard.tsx",
-    "frontend/src/components/ShortKurtisSection.tsx",
     "frontend/src/declarations/backend.did.d.ts",
     "frontend/src/declarations/backend.did.js",
     "frontend/src/hooks/useQueries.ts",
-    "frontend/src/index.css",
     "frontend/src/pages/HomePage.tsx",
-    "frontend/tailwind.config.js",
     "project_state.json",
     "scratch/component-selection.json",
     "spec.md",

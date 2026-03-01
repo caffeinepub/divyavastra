@@ -26,7 +26,7 @@ export const Product = IDL.Record({
   'available' : IDL.Bool,
   'imageUrl' : IDL.Text,
   'category' : IDL.Text,
-  'price' : IDL.Nat,
+  'price' : IDL.Opt(IDL.Nat),
 });
 
 export const idlService = IDL.Service({
@@ -61,8 +61,10 @@ export const idlService = IDL.Service({
   'getProductById' : IDL.Func([IDL.Text], [Product], ['query']),
   'getProducts' : IDL.Func([], [IDL.Vec(Product)], ['query']),
   'getProductsByCategory' : IDL.Func([IDL.Text], [IDL.Vec(Product)], ['query']),
-  'initializeGopiProducts' : IDL.Func([], [], []),
-  'initializeKurtiProducts' : IDL.Func([], [], []),
+  'initializeGopiDresses' : IDL.Func([], [], []),
+  'initializeJaipuriSkirts' : IDL.Func([], [], []),
+  'initializeKurtis' : IDL.Func([], [], []),
+  'initializeSarees' : IDL.Func([], [], []),
   'updateProduct' : IDL.Func([Product], [], []),
 });
 
@@ -87,7 +89,7 @@ export const idlFactory = ({ IDL }) => {
     'available' : IDL.Bool,
     'imageUrl' : IDL.Text,
     'category' : IDL.Text,
-    'price' : IDL.Nat,
+    'price' : IDL.Opt(IDL.Nat),
   });
   
   return IDL.Service({
@@ -126,8 +128,10 @@ export const idlFactory = ({ IDL }) => {
         [IDL.Vec(Product)],
         ['query'],
       ),
-    'initializeGopiProducts' : IDL.Func([], [], []),
-    'initializeKurtiProducts' : IDL.Func([], [], []),
+    'initializeGopiDresses' : IDL.Func([], [], []),
+    'initializeJaipuriSkirts' : IDL.Func([], [], []),
+    'initializeKurtis' : IDL.Func([], [], []),
+    'initializeSarees' : IDL.Func([], [], []),
     'updateProduct' : IDL.Func([Product], [], []),
   });
 };

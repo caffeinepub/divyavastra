@@ -72,27 +72,45 @@ export default {
                     border: 'oklch(var(--sidebar-border))',
                     ring: 'oklch(var(--sidebar-ring))'
                 },
-                // Radha Krishna theme tokens
-                'peacock': {
-                    DEFAULT: 'oklch(0.32 0.09 240)',
-                    light: 'oklch(0.45 0.10 240)',
-                    dark: 'oklch(0.22 0.07 240)',
-                    deep: 'oklch(0.18 0.06 240)',
+                // DivyaVastrav Red Jaipuri theme tokens
+                'crimson': {
+                    DEFAULT: 'oklch(0.45 0.22 18)',
+                    light: 'oklch(0.58 0.20 18)',
+                    dark: 'oklch(0.32 0.18 18)',
+                    deep: 'oklch(0.22 0.14 18)',
+                    50: 'oklch(0.97 0.018 55)',
+                    100: 'oklch(0.94 0.04 30)',
+                    200: 'oklch(0.88 0.08 25)',
+                    300: 'oklch(0.75 0.14 20)',
+                    400: 'oklch(0.62 0.18 18)',
+                    500: 'oklch(0.45 0.22 18)',
+                    600: 'oklch(0.38 0.20 18)',
+                    700: 'oklch(0.32 0.18 18)',
+                    800: 'oklch(0.25 0.14 18)',
+                    900: 'oklch(0.18 0.10 18)',
                 },
-                'divine-gold': {
-                    DEFAULT: 'oklch(0.78 0.16 80)',
-                    light: 'oklch(0.88 0.12 85)',
-                    dark: 'oklch(0.65 0.14 75)',
+                'golden': {
+                    DEFAULT: 'oklch(0.75 0.18 75)',
+                    light: 'oklch(0.88 0.14 80)',
+                    dark: 'oklch(0.62 0.16 70)',
+                    50: 'oklch(0.97 0.04 80)',
+                    100: 'oklch(0.94 0.08 78)',
+                    200: 'oklch(0.88 0.12 76)',
+                    300: 'oklch(0.82 0.15 75)',
+                    400: 'oklch(0.75 0.18 75)',
+                    500: 'oklch(0.68 0.18 72)',
+                    600: 'oklch(0.60 0.16 70)',
                 },
-                'saffron': {
-                    DEFAULT: 'oklch(0.72 0.18 55)',
-                    light: 'oklch(0.82 0.14 60)',
-                    dark: 'oklch(0.60 0.16 50)',
-                },
-                'lotus': {
-                    DEFAULT: 'oklch(0.78 0.12 340)',
-                    light: 'oklch(0.88 0.08 340)',
+                'warm-pink': {
+                    DEFAULT: 'oklch(0.72 0.16 340)',
+                    light: 'oklch(0.85 0.10 340)',
                     pale: 'oklch(0.94 0.05 340)',
+                    deep: 'oklch(0.55 0.18 340)',
+                },
+                'royal-red': {
+                    DEFAULT: 'oklch(0.35 0.20 18)',
+                    dark: 'oklch(0.22 0.14 18)',
+                    deep: 'oklch(0.16 0.10 18)',
                 },
             },
             borderRadius: {
@@ -102,11 +120,11 @@ export default {
             },
             boxShadow: {
                 xs: '0 1px 2px 0 rgba(0,0,0,0.05)',
-                'warm': '0 4px 24px 0 rgba(50, 80, 160, 0.12)',
-                'warm-lg': '0 8px 40px 0 rgba(50, 80, 160, 0.18)',
-                'gold': '0 2px 12px 0 rgba(200, 160, 40, 0.35)',
-                'peacock': '0 4px 24px 0 rgba(30, 60, 140, 0.20)',
-                'divine': '0 8px 40px 0 rgba(200, 160, 40, 0.25), 0 2px 8px 0 rgba(30, 60, 140, 0.15)',
+                'warm': '0 4px 24px 0 rgba(160, 30, 30, 0.12)',
+                'warm-lg': '0 8px 40px 0 rgba(160, 30, 30, 0.18)',
+                'gold': '0 2px 12px 0 rgba(200, 150, 30, 0.40)',
+                'crimson': '0 4px 24px 0 rgba(160, 20, 20, 0.22)',
+                'divine': '0 8px 40px 0 rgba(200, 150, 30, 0.28), 0 2px 8px 0 rgba(160, 20, 20, 0.18)',
             },
             keyframes: {
                 'accordion-down': {
@@ -126,8 +144,12 @@ export default {
                     '50%': { transform: 'translateY(-6px)' },
                 },
                 'glow-pulse': {
-                    '0%, 100%': { boxShadow: '0 0 8px oklch(0.78 0.16 80 / 0.4)' },
-                    '50%': { boxShadow: '0 0 20px oklch(0.78 0.16 80 / 0.8)' },
+                    '0%, 100%': { boxShadow: '0 0 8px oklch(0.75 0.18 75 / 0.4)' },
+                    '50%': { boxShadow: '0 0 24px oklch(0.75 0.18 75 / 0.85)' },
+                },
+                'shimmer-gold': {
+                    '0%': { backgroundPosition: '-200% 0' },
+                    '100%': { backgroundPosition: '200% 0' },
                 },
             },
             animation: {
