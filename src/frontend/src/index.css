@@ -1,0 +1,185 @@
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/assets/fonts/PlayfairDisplay-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Playfair Display";
+  src: url("/assets/fonts/PlayfairDisplay-Italic-Variable.woff2")
+    format("woff2");
+  font-weight: 100 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Crimson Pro";
+  src: url("/assets/fonts/CrimsonPro-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "General Sans";
+  src: url("/assets/fonts/GeneralSans-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.5rem;
+
+    /* Vrindavan Devotee Collection — Saffron & Cream Spiritual Palette */
+    /* Background: warm cream */
+    --background: 0.97 0.015 75;
+    --foreground: 0.18 0.05 30;
+
+    --card: 0.99 0.008 70;
+    --card-foreground: 0.18 0.05 30;
+
+    --popover: 0.99 0.008 70;
+    --popover-foreground: 0.18 0.05 30;
+
+    /* Saffron - primary */
+    --primary: 0.62 0.16 55;
+    --primary-foreground: 0.99 0.004 75;
+
+    /* Warm golden - secondary */
+    --secondary: 0.9 0.05 75;
+    --secondary-foreground: 0.25 0.06 30;
+
+    /* Deep maroon - accent */
+    --accent: 0.35 0.12 20;
+    --accent-foreground: 0.99 0.004 75;
+
+    --muted: 0.94 0.02 70;
+    --muted-foreground: 0.52 0.05 30;
+
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+
+    --border: 0.88 0.04 65;
+    --input: 0.88 0.04 65;
+    --ring: 0.62 0.16 55;
+
+    --chart-1: 0.62 0.16 55;
+    --chart-2: 0.35 0.12 20;
+    --chart-3: 0.72 0.15 70;
+    --chart-4: 0.5 0.1 25;
+    --chart-5: 0.8 0.1 80;
+
+    --sidebar: 0.97 0.015 75;
+    --sidebar-foreground: 0.18 0.05 30;
+    --sidebar-primary: 0.62 0.16 55;
+    --sidebar-primary-foreground: 0.99 0.004 75;
+    --sidebar-accent: 0.94 0.02 70;
+    --sidebar-accent-foreground: 0.18 0.05 30;
+    --sidebar-border: 0.88 0.04 65;
+    --sidebar-ring: 0.62 0.16 55;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-heading;
+  }
+}
+
+@layer components {
+  /* Lotus divider */
+  .lotus-divider {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-align: center;
+  }
+
+  .lotus-divider::before,
+  .lotus-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      oklch(0.62 0.16 55 / 0.5),
+      transparent
+    );
+  }
+
+  /* Saffron divider line */
+  .saffron-divider {
+    height: 1px;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      oklch(0.62 0.16 55 / 0.6),
+      oklch(0.72 0.15 70 / 0.8),
+      oklch(0.62 0.16 55 / 0.6),
+      transparent
+    );
+  }
+
+  /* Devotional card */
+  .devotional-card {
+    background: oklch(0.99 0.008 70);
+    border: 1px solid oklch(0.62 0.16 55 / 0.25);
+    box-shadow: 0 4px 20px oklch(0.62 0.16 55 / 0.08), 0 1px 4px
+      oklch(0.35 0.12 20 / 0.05);
+    transition: box-shadow 0.3s ease, transform 0.3s ease;
+  }
+
+  .devotional-card:hover {
+    box-shadow: 0 8px 32px oklch(0.62 0.16 55 / 0.18), 0 2px 8px
+      oklch(0.35 0.12 20 / 0.1);
+    transform: translateY(-3px);
+  }
+
+  /* Temple background pattern */
+  .temple-bg {
+    background: radial-gradient(
+        ellipse at 20% 50%,
+        oklch(0.62 0.16 55 / 0.06) 0%,
+        transparent 50%
+      ),
+      radial-gradient(
+        ellipse at 80% 50%,
+        oklch(0.35 0.12 20 / 0.04) 0%,
+        transparent 50%
+      ),
+      linear-gradient(180deg, oklch(0.97 0.015 75) 0%, oklch(0.96 0.02 70) 100%);
+  }
+
+  /* Sacred glow */
+  .sacred-glow {
+    box-shadow: 0 0 40px oklch(0.72 0.15 70 / 0.25), 0 0 80px
+      oklch(0.62 0.16 55 / 0.1);
+  }
+
+  /* Ornamental border */
+  .ornamental-border {
+    border: 1px solid oklch(0.62 0.16 55 / 0.35);
+    box-shadow: inset 0 0 0 3px oklch(0.72 0.15 70 / 0.1);
+  }
+}
