@@ -29,7 +29,8 @@ import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
 import { generateId, getProducts, saveProducts } from "@/lib/store";
 import type { Product } from "@/lib/store";
-import { Pencil, Plus, Trash2, X } from "lucide-react";
+import { Pencil, Trash2 } from "lucide-react";
+import { Plus } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
 
@@ -42,21 +43,19 @@ const PREDEFINED_CATEGORIES = [
   "Other",
 ];
 
-type ImageEntry = { id: string; url: string };
-
 type FormState = {
   name: string;
   category: string;
   customCategory: string;
   description: string;
   price: number;
-  images: ImageEntry[];
+  mainImage: string;
+  gallery1: string;
+  gallery2: string;
+  gallery3: string;
+  gallery4: string;
   inStock: boolean;
 };
-
-function makeImageEntry(url = ""): ImageEntry {
-  return { id: generateId(), url };
-}
 
 const EMPTY_FORM: FormState = {
   name: "",
@@ -64,7 +63,11 @@ const EMPTY_FORM: FormState = {
   customCategory: "",
   description: "",
   price: 0,
-  images: [makeImageEntry()],
+  mainImage: "",
+  gallery1: "",
+  gallery2: "",
+  gallery3: "",
+  gallery4: "",
   inStock: true,
 };
 
@@ -77,7 +80,7 @@ export default function AdminProductsPage() {
 
   const openAdd = () => {
     setEditProduct(null);
-    setForm({ ...EMPTY_FORM, images: [makeImageEntry()] });
+    setForm(EMPTY_FORM);
     setFormOpen(true);
   };
 
@@ -86,19 +89,23 @@ export default function AdminProductsPage() {
     const isPredefined = PREDEFINED_CATEGORIES.slice(0, -1).includes(
       product.category,
     );
-    const rawImages =
+    const imgs =
       product.images && product.images.length > 0
         ? product.images
         : product.imageUrl
           ? [product.imageUrl]
-          : [""];
+          : [];
     setForm({
       name: product.name,
       category: isPredefined ? product.category : "Other",
       customCategory: isPredefined ? "" : product.category,
       description: product.description,
       price: product.price,
-      images: rawImages.map((url) => makeImageEntry(url)),
+      mainImage: imgs[0] || "",
+      gallery1: imgs[1] || "",
+      gallery2: imgs[2] || "",
+      gallery3: imgs[3] || "",
+      gallery4: imgs[4] || "",
       inStock: product.inStock,
     });
     setFormOpen(true);
@@ -111,16 +118,21 @@ export default function AdminProductsPage() {
       toast.error("Please fill in name, category, and a valid price.");
       return;
     }
-    const cleanImages = form.images
-      .map((e) => e.url)
-      .filter((url) => url.trim() !== "");
+    const allImages = [
+      form.mainImage,
+      form.gallery1,
+      form.gallery2,
+      form.gallery3,
+      form.gallery4,
+    ].filter((url) => url.trim() !== "");
+
     const productData: Omit<Product, "id"> = {
       name: form.name,
       category: finalCategory,
       description: form.description,
       price: form.price,
-      imageUrl: cleanImages[0] || "",
-      images: cleanImages,
+      imageUrl: allImages[0] || "",
+      images: allImages,
       inStock: form.inStock,
     };
 
@@ -147,26 +159,10 @@ export default function AdminProductsPage() {
     toast.success("Product deleted.");
   };
 
-  const addImageField = () => {
-    setForm((f) => ({ ...f, images: [...f.images, makeImageEntry()] }));
-  };
-
-  const updateImage = (id: string, value: string) => {
-    setForm((f) => ({
-      ...f,
-      images: f.images.map((e) => (e.id === id ? { ...e, url: value } : e)),
-    }));
-  };
-
-  const removeImage = (id: string) => {
-    setForm((f) => {
-      const images = f.images.filter((e) => e.id !== id);
-      return {
-        ...f,
-        images: images.length === 0 ? [makeImageEntry()] : images,
-      };
-    });
-  };
+  const field =
+    (key: keyof FormState) =>
+    (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) =>
+      setForm((f) => ({ ...f, [key]: e.target.value }));
 
   return (
     <div>
@@ -205,7 +201,7 @@ export default function AdminProductsPage() {
                   Price (₹)
                 </th>
                 <th className="text-left px-4 py-2.5 text-xs text-muted-foreground font-medium hidden sm:table-cell">
-                  Images
+                  Photos
                 </th>
                 <th className="text-left px-4 py-2.5 text-xs text-muted-foreground font-medium hidden sm:table-cell">
                   Stock
@@ -237,7 +233,11 @@ export default function AdminProductsPage() {
                   </td>
                   <td className="px-4 py-3 hidden sm:table-cell">
                     <span
-                      className={`text-[11px] px-2 py-0.5 rounded-full font-medium ${p.inStock ? "bg-green-50 text-green-700" : "bg-red-50 text-red-700"}`}
+                      className={`text-[11px] px-2 py-0.5 rounded-full font-medium ${
+                        p.inStock
+                          ? "bg-green-50 text-green-700"
+                          : "bg-red-50 text-red-700"
+                      }`}
                     >
                       {p.inStock ? "In Stock" : "Out of Stock"}
                     </span>
@@ -279,29 +279,41 @@ export default function AdminProductsPage() {
         >
           <DialogHeader>
             <DialogTitle className="font-heading">
-              {editProduct ? "Edit Product" : "Add Product"}
+              {editProduct ? "Edit Product" : "Add New Product"}
             </DialogTitle>
           </DialogHeader>
 
           <div className="space-y-4">
-            {/* Name */}
+            {/* Product Name */}
             <div className="space-y-1">
-              <Label className="text-xs text-muted-foreground">Name *</Label>
+              <Label className="text-xs font-medium">Product Name *</Label>
               <Input
+                data-ocid="admin.product.name.input"
                 value={form.name}
-                onChange={(e) =>
-                  setForm((f) => ({ ...f, name: e.target.value }))
-                }
-                placeholder="Product name"
+                onChange={field("name")}
+                placeholder="e.g. Devotee Couple Set 1"
                 className="h-9"
               />
             </div>
 
-            {/* Category Select */}
+            {/* Price */}
             <div className="space-y-1">
-              <Label className="text-xs text-muted-foreground">
-                Category *
-              </Label>
+              <Label className="text-xs font-medium">Price (₹) *</Label>
+              <Input
+                data-ocid="admin.product.price.input"
+                type="number"
+                value={form.price || ""}
+                onChange={(e) =>
+                  setForm((f) => ({ ...f, price: Number(e.target.value) }))
+                }
+                placeholder="e.g. 6500"
+                className="h-9"
+              />
+            </div>
+
+            {/* Category */}
+            <div className="space-y-1">
+              <Label className="text-xs font-medium">Category *</Label>
               <Select
                 value={form.category}
                 onValueChange={(v) =>
@@ -334,81 +346,69 @@ export default function AdminProductsPage() {
               )}
             </div>
 
-            {/* Price */}
+            {/* Main Image URL */}
             <div className="space-y-1">
-              <Label className="text-xs text-muted-foreground">
-                Price (₹) *
+              <Label className="text-xs font-medium">Main Image URL</Label>
+              <Input
+                data-ocid="admin.product.main_image.input"
+                value={form.mainImage}
+                onChange={field("mainImage")}
+                placeholder="https://ibb.co/... (main photo)"
+                className="h-9 text-xs"
+              />
+            </div>
+
+            {/* Gallery Images */}
+            <div className="space-y-2">
+              <Label className="text-xs font-medium">
+                Gallery Images (optional)
               </Label>
               <Input
-                type="number"
-                value={form.price || ""}
-                onChange={(e) =>
-                  setForm((f) => ({ ...f, price: Number(e.target.value) }))
-                }
-                placeholder="0"
-                className="h-9"
+                data-ocid="admin.product.gallery1.input"
+                value={form.gallery1}
+                onChange={field("gallery1")}
+                placeholder="Gallery Image 1 URL"
+                className="h-9 text-xs"
+              />
+              <Input
+                data-ocid="admin.product.gallery2.input"
+                value={form.gallery2}
+                onChange={field("gallery2")}
+                placeholder="Gallery Image 2 URL"
+                className="h-9 text-xs"
+              />
+              <Input
+                data-ocid="admin.product.gallery3.input"
+                value={form.gallery3}
+                onChange={field("gallery3")}
+                placeholder="Gallery Image 3 URL"
+                className="h-9 text-xs"
+              />
+              <Input
+                data-ocid="admin.product.gallery4.input"
+                value={form.gallery4}
+                onChange={field("gallery4")}
+                placeholder="Gallery Image 4 URL"
+                className="h-9 text-xs"
               />
             </div>
 
             {/* Description */}
             <div className="space-y-1">
-              <Label className="text-xs text-muted-foreground">
-                Description
-              </Label>
+              <Label className="text-xs font-medium">Description</Label>
               <Textarea
+                data-ocid="admin.product.description.textarea"
                 value={form.description}
-                onChange={(e) =>
-                  setForm((f) => ({ ...f, description: e.target.value }))
-                }
+                onChange={field("description")}
                 placeholder="Product description..."
                 className="resize-none text-sm"
                 rows={3}
               />
             </div>
 
-            {/* Multi-image URLs */}
-            <div className="space-y-2">
-              <Label className="text-xs text-muted-foreground">
-                Product Images (URLs)
-              </Label>
-              {form.images.map((entry, idx) => (
-                <div key={entry.id} className="flex gap-2 items-center">
-                  <Input
-                    data-ocid="admin.product.image_url.input"
-                    value={entry.url}
-                    onChange={(e) => updateImage(entry.id, e.target.value)}
-                    placeholder={`Image URL ${idx + 1}`}
-                    className="h-9 flex-1 text-xs"
-                  />
-                  {form.images.length > 1 && (
-                    <Button
-                      type="button"
-                      variant="ghost"
-                      size="sm"
-                      onClick={() => removeImage(entry.id)}
-                      className="h-9 w-9 p-0 text-muted-foreground hover:text-destructive shrink-0"
-                    >
-                      <X size={13} />
-                    </Button>
-                  )}
-                </div>
-              ))}
-              <Button
-                type="button"
-                variant="outline"
-                size="sm"
-                onClick={addImageField}
-                data-ocid="admin.product.add_image.button"
-                className="w-full border-dashed border-gold/40 text-gold hover:bg-gold-pale text-xs gap-1.5 h-8"
-              >
-                <Plus size={12} />
-                Add Another Image
-              </Button>
-            </div>
-
             {/* In Stock */}
             <div className="flex items-center justify-between">
-              <Label className="text-xs text-muted-foreground">In Stock</Label>
+              <Label className="text-xs font-medium">In Stock</Label>
               <Switch
                 checked={form.inStock}
                 onCheckedChange={(v) => setForm((f) => ({ ...f, inStock: v }))}
