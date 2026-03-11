@@ -40,7 +40,6 @@ const DHOTI_IMAGES = [
   "https://i.ibb.co/Z6Rw5YnZ/Whats-App-Image-2026-03-11-at-23-42-35-2.jpg",
 ];
 
-// Direct image links for both Bagalbandi products
 const BAGALBANDI_IMAGES = [
   "https://i.ibb.co/HLqpFqTB/Whats-App-Image-2026-03-11-at-23-42-32.jpg",
   "https://i.ibb.co/FMLRg3L/Whats-App-Image-2026-03-11-at-23-42-32-1.jpg",
@@ -103,17 +102,6 @@ const SEED_PRODUCTS: Product[] = [
     inStock: true,
   },
   {
-    id: "p2",
-    name: "Bagalbandi (for Prabhujis)",
-    category: "Bagalbandi",
-    description:
-      "Traditional devotional Bagalbandi top ideal for temple visits, kirtan, and seva. Made from quality cotton fabric with handcrafted details. Imported from Vrindavan Dham.",
-    price: 2100,
-    imageUrl: BAGALBANDI_IMAGES[0],
-    images: BAGALBANDI_IMAGES,
-    inStock: true,
-  },
-  {
     id: "p2b",
     name: "Bagalbandi Set – Vrindavan Style",
     category: "Bagalbandi",
@@ -161,6 +149,9 @@ export function getProducts(): Product[] {
   }
   let base: Product[] = JSON.parse(raw);
 
+  // Migrate: remove p2 (old Bagalbandi for Prabhujis)
+  base = base.filter((p) => p.id !== "p2");
+
   // Migrate: inject new Gopi Dress products if not present
   const hasNewGopi = base.some((p) => p.id === "p1b");
   if (!hasNewGopi) {
@@ -179,29 +170,17 @@ export function getProducts(): Product[] {
     }
   }
 
-  // Migrate: inject new Bagalbandi Set (p2b) if not present
+  // Migrate: inject Bagalbandi Set (p2b) if not present
   const hasBagalbandiSet = base.some((p) => p.id === "p2b");
   if (!hasBagalbandiSet) {
-    const p2Index = base.findIndex((p) => p.id === "p2");
     const p2b = SEED_PRODUCTS.find((p) => p.id === "p2b")!;
-    if (p2Index !== -1) {
-      base = [...base.slice(0, p2Index + 1), p2b, ...base.slice(p2Index + 1)];
-    } else {
-      base = [...base, p2b];
-    }
+    base = [...base, p2b];
   }
 
   // Always force-update images for seeded products to latest direct links
   base = base.map((p) => {
     if (p.id === "p3") {
       return { ...p, imageUrl: DHOTI_IMAGES[0], images: DHOTI_IMAGES };
-    }
-    if (p.id === "p2") {
-      return {
-        ...p,
-        imageUrl: BAGALBANDI_IMAGES[0],
-        images: BAGALBANDI_IMAGES,
-      };
     }
     if (p.id === "p2b") {
       return {
