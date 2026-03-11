@@ -4,8 +4,8 @@ export type Product = {
   category: string;
   description: string;
   price: number;
-  imageUrl: string; // backward compat - first image
-  images: string[]; // multiple images
+  imageUrl: string;
+  images: string[];
   inStock: boolean;
 };
 
@@ -31,6 +31,31 @@ export type AdminSettings = {
   passwordHash: string;
   isSetup: boolean;
 };
+
+const DHOTI_IMAGES = [
+  "https://i.ibb.co/kg1SYFNQ/Whats-App-Image-2026-03-11-at-23-42-34.jpg",
+  "https://i.ibb.co/mVBsGjBN/Whats-App-Image-2026-03-11-at-23-42-34-1.jpg",
+  "https://i.ibb.co/wxGX8nx/Whats-App-Image-2026-03-11-at-23-42-34-2.jpg",
+  "https://i.ibb.co/8gpgLgBZ/Whats-App-Image-2026-03-11-at-23-42-35.jpg",
+  "https://i.ibb.co/Z6Rw5YnZ/Whats-App-Image-2026-03-11-at-23-42-35-2.jpg",
+];
+
+// Direct image links for both Bagalbandi products
+const BAGALBANDI_IMAGES = [
+  "https://i.ibb.co/HLqpFqTB/Whats-App-Image-2026-03-11-at-23-42-32.jpg",
+  "https://i.ibb.co/FMLRg3L/Whats-App-Image-2026-03-11-at-23-42-32-1.jpg",
+  "https://i.ibb.co/YFmxHJ5k/Whats-App-Image-2026-03-11-at-23-42-32-2.jpg",
+  "https://i.ibb.co/v6mvBNP5/Whats-App-Image-2026-03-11-at-23-42-33.jpg",
+  "https://i.ibb.co/CKfTSftB/Whats-App-Image-2026-03-11-at-23-42-33-2.jpg",
+];
+
+const COUPLE_IMAGES = [
+  "https://i.ibb.co/s948DdH2/Whats-App-Image-2026-03-11-at-23-19-21-1.jpg",
+  "https://i.ibb.co/zhJPRcHM/Whats-App-Image-2026-03-11-at-23-19-23.jpg",
+  "https://i.ibb.co/9k2YFkqH/Whats-App-Image-2026-03-11-at-23-19-22-1.jpg",
+  "https://i.ibb.co/4RJSspBd/Whats-App-Image-2026-03-11-at-23-19-21-2.jpg",
+  "https://i.ibb.co/Y4k091GF/Whats-App-Image-2026-03-11-at-23-19-24-1.jpg",
+];
 
 const SEED_PRODUCTS: Product[] = [
   {
@@ -82,10 +107,21 @@ const SEED_PRODUCTS: Product[] = [
     name: "Bagalbandi (for Prabhujis)",
     category: "Bagalbandi",
     description:
-      "Traditional devotional top ideal for temple visits, kirtan, and seva. Made from quality cotton fabric with handcrafted details.",
+      "Traditional devotional Bagalbandi top ideal for temple visits, kirtan, and seva. Made from quality cotton fabric with handcrafted details. Imported from Vrindavan Dham.",
     price: 2100,
-    imageUrl: "",
-    images: [],
+    imageUrl: BAGALBANDI_IMAGES[0],
+    images: BAGALBANDI_IMAGES,
+    inStock: true,
+  },
+  {
+    id: "p2b",
+    name: "Bagalbandi Set – Vrindavan Style",
+    category: "Bagalbandi",
+    description:
+      "Beautifully crafted Bagalbandi Set straight from Vrindavan Dham. Perfect for daily seva, kirtan, and temple visits. Premium cotton fabric with traditional devotional detailing. Limited pieces available.",
+    price: 2100,
+    imageUrl: BAGALBANDI_IMAGES[0],
+    images: BAGALBANDI_IMAGES,
     inStock: true,
   },
   {
@@ -93,21 +129,21 @@ const SEED_PRODUCTS: Product[] = [
     name: "Dhoti & Chadar Set (for Prabhujis)",
     category: "Dhoti Sets",
     description:
-      "Classic soft dhoti set for seva and festivals. Comfortable and traditional, perfect for all devotional occasions.",
+      "Classic soft dhoti set for seva and festivals. Comfortable and traditional, perfect for all devotional occasions. Imported from Vrindavan Dham.",
     price: 2000,
-    imageUrl: "",
-    images: [],
+    imageUrl: DHOTI_IMAGES[0],
+    images: DHOTI_IMAGES,
     inStock: true,
   },
   {
     id: "p4",
-    name: "Complete Devotee Couple Set",
+    name: "Sacred Devotee Couple Set – Vrindavan Collection",
     category: "Devotee Couple Sets",
     description:
-      "Complete set for devotee couples — Gopi Dress and Bagalbandi together. Imported from Vrindavan Dham, limited pieces available.",
+      "Adorn yourself and your beloved in the divine grace of Vrindavan. This premium couple set includes an elegant Gopi Dress for Mataji and a traditional Bagalbandi-Dhoti for Prabhuji — crafted for seva, kirtan, and sacred celebrations.",
     price: 10600,
-    imageUrl: "",
-    images: [],
+    imageUrl: COUPLE_IMAGES[0],
+    images: COUPLE_IMAGES,
     inStock: true,
   },
 ];
@@ -123,13 +159,11 @@ export function getProducts(): Product[] {
     localStorage.setItem("dv_products", JSON.stringify(SEED_PRODUCTS));
     return SEED_PRODUCTS;
   }
-  const parsed: Product[] = JSON.parse(raw);
-  // Migrate old data: add images array if missing
-  // Also inject new Gopi Dress products if not present
-  const hasNewGopi = parsed.some((p) => p.id === "p1b");
-  let base = parsed;
+  let base: Product[] = JSON.parse(raw);
+
+  // Migrate: inject new Gopi Dress products if not present
+  const hasNewGopi = base.some((p) => p.id === "p1b");
   if (!hasNewGopi) {
-    // Add new Gopi Dress products after p1
     const p1Index = base.findIndex((p) => p.id === "p1");
     const newGopi = SEED_PRODUCTS.filter((p) =>
       ["p1", "p1b", "p1c", "p1d"].includes(p.id),
@@ -143,15 +177,60 @@ export function getProducts(): Product[] {
     } else {
       base = [...newGopi, ...base.filter((p) => p.id !== "p1")];
     }
-    localStorage.setItem("dv_products", JSON.stringify(base));
   }
-  const migrated = base.map((p) => {
+
+  // Migrate: inject new Bagalbandi Set (p2b) if not present
+  const hasBagalbandiSet = base.some((p) => p.id === "p2b");
+  if (!hasBagalbandiSet) {
+    const p2Index = base.findIndex((p) => p.id === "p2");
+    const p2b = SEED_PRODUCTS.find((p) => p.id === "p2b")!;
+    if (p2Index !== -1) {
+      base = [...base.slice(0, p2Index + 1), p2b, ...base.slice(p2Index + 1)];
+    } else {
+      base = [...base, p2b];
+    }
+  }
+
+  // Always force-update images for seeded products to latest direct links
+  base = base.map((p) => {
+    if (p.id === "p3") {
+      return { ...p, imageUrl: DHOTI_IMAGES[0], images: DHOTI_IMAGES };
+    }
+    if (p.id === "p2") {
+      return {
+        ...p,
+        imageUrl: BAGALBANDI_IMAGES[0],
+        images: BAGALBANDI_IMAGES,
+      };
+    }
+    if (p.id === "p2b") {
+      return {
+        ...p,
+        imageUrl: BAGALBANDI_IMAGES[0],
+        images: BAGALBANDI_IMAGES,
+      };
+    }
+    if (p.id === "p4") {
+      return {
+        ...p,
+        name: "Sacred Devotee Couple Set – Vrindavan Collection",
+        description:
+          "Adorn yourself and your beloved in the divine grace of Vrindavan. This premium couple set includes an elegant Gopi Dress for Mataji and a traditional Bagalbandi-Dhoti for Prabhuji — crafted for seva, kirtan, and sacred celebrations.",
+        imageUrl: COUPLE_IMAGES[0],
+        images: COUPLE_IMAGES,
+      };
+    }
+    return p;
+  });
+
+  localStorage.setItem("dv_products", JSON.stringify(base));
+
+  return base.map((p) => {
     if (!p.images) {
       return { ...p, images: p.imageUrl ? [p.imageUrl] : [] };
     }
     return p;
   });
-  return migrated;
 }
 
 export function saveProducts(products: Product[]) {
