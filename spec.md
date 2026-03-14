@@ -1,14 +1,30 @@
-# Specification
+# DivyaVastra
 
-## Summary
-**Goal:** Add a "Gopi Dresses" product section to the homepage and map all previously uploaded product images to their respective product cards.
+## Current State
+- Admin login: password-only, no username field, no forgot password
+- Checkout: single-screen modal with name, phone, payment method selection
+- Currency: INR/NPR/USD auto-detection exists
 
-**Planned changes:**
-- Add a "Gopi Dress" category in the backend with 2–3 seeded products using null price (displayed as "Price Updating Soon") and WhatsApp Buy Now buttons
-- Display a "Gopi Dresses" section on the homepage alongside existing Jaipuri Skirts, Short Kurtis, and Sarees sections, using the same red/golden Jaipuri theme
-- Copy uploaded images (IMG_4047-1.jpeg, IMG_4047-2.jpeg, IMG_4044-1.jpeg, IMG_4044-2.jpeg, IMG_4045-1.jpeg, IMG_4045-2.jpeg, IMG_4048-1.jpeg, IMG_4048-2.jpeg) to `frontend/public/assets/generated`
-- Update backend seed `imageUrl` values for Jaipuri Skirt products to reference `/assets/generated/IMG_4047-1.jpeg`, `/assets/generated/IMG_4044-1.jpeg`, `/assets/generated/IMG_4045-1.jpeg`
-- Update backend seed `imageUrl` for Short Kurti product to reference `/assets/generated/IMG_4048-1.jpeg`
-- Assign appropriate uploaded images to Gopi Dress seeded products
+## Requested Changes (Diff)
 
-**User-visible outcome:** The homepage shows a new "Gopi Dresses" section with product cards using the uploaded photos, and all existing Jaipuri Skirt and Short Kurti cards now display their correct uploaded product images.
+### Add
+- Username field to admin login (fixed: `divyash123`)
+- Recovery code system for forgot password (shown once on first setup, can be used to reset password)
+- Change username/password option in admin settings
+- Amazon-style multi-step checkout: Step 1 (Shipping Address), Step 2 (Payment Method), Step 3 (Order Summary + Confirm)
+- Address fields in checkout (name, phone, address line, city, state, pincode)
+
+### Modify
+- AdminLoginPage: add username input, forgot password link with recovery code flow
+- AdminSettingsPage: add change username and change password section
+- store.ts: add username and recoveryCode to AdminSettings type
+- CheckoutModal: replace single-screen with 3-step wizard
+
+### Remove
+- Nothing removed
+
+## Implementation Plan
+1. Update `store.ts` AdminSettings type to include username and recoveryCode
+2. Update `AdminLoginPage.tsx` with username field, forgot password flow via recovery code
+3. Update `AdminSettingsPage.tsx` with change username/password section
+4. Rewrite `CheckoutModal.tsx` as multi-step: Step 1 shipping, Step 2 payment, Step 3 summary

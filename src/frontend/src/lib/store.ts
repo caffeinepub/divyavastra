@@ -15,6 +15,10 @@ export type Order = {
   productName: string;
   customerName: string;
   customerPhone: string;
+  address: string;
+  city: string;
+  state: string;
+  pincode: string;
   paymentMethod: string;
   status: "Pending" | "Confirmed" | "Shipped" | "Delivered";
   timestamp: number;
@@ -30,6 +34,8 @@ export type PaymentSettings = {
 export type AdminSettings = {
   passwordHash: string;
   isSetup: boolean;
+  username: string;
+  recoveryCode: string;
 };
 
 const DHOTI_IMAGES = [
@@ -149,10 +155,8 @@ export function getProducts(): Product[] {
   }
   let base: Product[] = JSON.parse(raw);
 
-  // Migrate: remove p2 (old Bagalbandi for Prabhujis)
   base = base.filter((p) => p.id !== "p2");
 
-  // Migrate: inject new Gopi Dress products if not present
   const hasNewGopi = base.some((p) => p.id === "p1b");
   if (!hasNewGopi) {
     const p1Index = base.findIndex((p) => p.id === "p1");
@@ -170,14 +174,12 @@ export function getProducts(): Product[] {
     }
   }
 
-  // Migrate: inject Bagalbandi Set (p2b) if not present
   const hasBagalbandiSet = base.some((p) => p.id === "p2b");
   if (!hasBagalbandiSet) {
     const p2b = SEED_PRODUCTS.find((p) => p.id === "p2b")!;
     base = [...base, p2b];
   }
 
-  // Always force-update images for seeded products to latest direct links
   base = base.map((p) => {
     if (p.id === "p3") {
       return { ...p, imageUrl: DHOTI_IMAGES[0], images: DHOTI_IMAGES };
@@ -247,7 +249,19 @@ export function savePaymentSettings(settings: PaymentSettings) {
 
 export function getAdminSettings(): AdminSettings {
   const raw = localStorage.getItem("dv_admin");
-  return raw ? JSON.parse(raw) : { passwordHash: "", isSetup: false };
+  if (!raw)
+    return {
+      passwordHash: "",
+      isSetup: false,
+      username: "divyash123",
+      recoveryCode: "",
+    };
+  const parsed = JSON.parse(raw);
+  return {
+    username: "divyash123",
+    recoveryCode: "",
+    ...parsed,
+  };
 }
 
 export function saveAdminSettings(settings: AdminSettings) {
